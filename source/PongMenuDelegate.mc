@@ -9,9 +9,9 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
 
     function onMenuItem(item) {
         if (item == :item_1) {
-            Sys.println("item 1");
+            Sys.println("Host");
         } else if (item == :item_2) {
-            Sys.println("item 2");
+            Sys.println("Join");
         }
     }
 

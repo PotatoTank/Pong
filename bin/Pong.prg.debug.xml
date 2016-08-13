@@ -11,18 +11,17 @@
 <entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="6" pc="268435642" symbol="initialize"/>
 <entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="10" pc="268435663" symbol="onMenu"/>
 <entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="11" pc="268435747" symbol="onMenu"/>
-<entry filename="D:\\workspace\\Pong\\source\\PongApp.mc" lineNum="7" pc="268435753" symbol="initialize"/>
-<entry filename="D:\\workspace\\Pong\\source\\PongApp.mc" lineNum="20" pc="268435780" symbol="getInitialView"/>
-<entry filename="Rez" lineNum="16" pc="268435850" symbol="initialize"/>
-<entry filename="Rez" lineNum="17" pc="268435868" symbol="initialize"/>
-<entry filename="Rez" lineNum="18" pc="268435920" symbol="initialize"/>
-<entry filename="Rez" lineNum="35" pc="268435975" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="36" pc="268435989" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="37" pc="268436129" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="38" pc="268436144" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="39" pc="268436196" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="40" pc="268436284" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="41" pc="268436336" symbol="MainLayout"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongApp.mc" lineNum="18" pc="268435759" symbol="getInitialView"/>
+<entry filename="Rez" lineNum="16" pc="268435830" symbol="initialize"/>
+<entry filename="Rez" lineNum="17" pc="268435848" symbol="initialize"/>
+<entry filename="Rez" lineNum="18" pc="268435900" symbol="initialize"/>
+<entry filename="Rez" lineNum="35" pc="268435955" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="36" pc="268435969" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="37" pc="268436109" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="38" pc="268436124" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="39" pc="268436176" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="40" pc="268436264" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="41" pc="268436316" symbol="MainLayout"/>
 </pcToLineNum>
 <symbolTable>
 <entry id="8389124" method="true" symbol="onUpdate"/>
@@ -65,10 +64,10 @@
 <entry id="8388772" module="true" symbol="Fonts"/>
 </symbolTable>
 <localVars>
-<entry endPc="268436363" name="rez_cmp_local_label_6NWEVJXHFO" stackId="3" startPc="268435975"/>
-<entry endPc="268436363" name="rez_cmp_local_label_6NWEVJXHFO_fontHeight" stackId="4" startPc="268435975"/>
-<entry endPc="268436363" name="rez_cmp_local_label_6NWEVJXHFO_font" stackId="2" startPc="268435975"/>
-<entry endPc="268436363" name="rez_cmp_local_bitmap_id_monkey" stackId="5" startPc="268435975"/>
+<entry endPc="268436343" name="rez_cmp_local_label_Q29BH11PPZ" stackId="3" startPc="268435955"/>
+<entry endPc="268436343" name="rez_cmp_local_label_Q29BH11PPZ_fontHeight" stackId="4" startPc="268435955"/>
+<entry endPc="268436343" name="rez_cmp_local_bitmap_id_monkey" stackId="5" startPc="268435955"/>
+<entry endPc="268436343" name="rez_cmp_local_label_Q29BH11PPZ_font" stackId="2" startPc="268435955"/>
 </localVars>
 <annotations/>
 <functions>
@@ -100,9 +99,6 @@
 <documentation/>
 </functionEntry>
 <functionEntry name="onMenu" parent="PongDelegate">
-<documentation/>
-</functionEntry>
-<functionEntry name="initialize" parent="PongApp">
 <documentation/>
 </functionEntry>
 <functionEntry name="onStart" parent="PongApp">
