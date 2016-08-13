@@ -64,10 +64,10 @@
 <entry id="8388772" module="true" symbol="Fonts"/>
 </symbolTable>
 <localVars>
-<entry endPc="268436343" name="rez_cmp_local_label_Q29BH11PPZ" stackId="3" startPc="268435955"/>
-<entry endPc="268436343" name="rez_cmp_local_label_Q29BH11PPZ_fontHeight" stackId="4" startPc="268435955"/>
 <entry endPc="268436343" name="rez_cmp_local_bitmap_id_monkey" stackId="5" startPc="268435955"/>
-<entry endPc="268436343" name="rez_cmp_local_label_Q29BH11PPZ_font" stackId="2" startPc="268435955"/>
+<entry endPc="268436343" name="rez_cmp_local_label_4LWOHENG02_fontHeight" stackId="4" startPc="268435955"/>
+<entry endPc="268436343" name="rez_cmp_local_label_4LWOHENG02" stackId="3" startPc="268435955"/>
+<entry endPc="268436343" name="rez_cmp_local_label_4LWOHENG02_font" stackId="2" startPc="268435955"/>
 </localVars>
 <annotations/>
 <functions>
