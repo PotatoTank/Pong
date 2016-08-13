@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+<pcToLineNum>
+<entry filename="D:\\workspace\\Pong\\source\\PongView.mc" lineNum="6" pc="268435458" symbol="initialize"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongView.mc" lineNum="11" pc="268435479" symbol="onLayout"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongView.mc" lineNum="23" pc="268435522" symbol="onUpdate"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongMenuDelegate.mc" lineNum="7" pc="268435548" symbol="initialize"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongMenuDelegate.mc" lineNum="11" pc="268435569" symbol="onMenuItem"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongMenuDelegate.mc" lineNum="12" pc="268435580" symbol="onMenuItem"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongMenuDelegate.mc" lineNum="14" pc="268435615" symbol="onMenuItem"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="6" pc="268435642" symbol="initialize"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="10" pc="268435663" symbol="onMenu"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="11" pc="268435747" symbol="onMenu"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongApp.mc" lineNum="7" pc="268435753" symbol="initialize"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongApp.mc" lineNum="20" pc="268435780" symbol="getInitialView"/>
+<entry filename="Rez" lineNum="16" pc="268435850" symbol="initialize"/>
+<entry filename="Rez" lineNum="17" pc="268435868" symbol="initialize"/>
+<entry filename="Rez" lineNum="18" pc="268435920" symbol="initialize"/>
+<entry filename="Rez" lineNum="35" pc="268435975" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="36" pc="268435989" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="37" pc="268436129" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="38" pc="268436144" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="39" pc="268436196" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="40" pc="268436284" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="41" pc="268436336" symbol="MainLayout"/>
+</pcToLineNum>
+<symbolTable>
+<entry id="8389124" method="true" symbol="onUpdate"/>
+<entry id="8389349" symbol="justification"/>
+<entry id="10" object="true" symbol="PongDelegate"/>
+<entry field="true" id="8388611" module="true" symbol="Toybox"/>
+<entry id="16" object="true" symbol="MainMenu"/>
+<entry id="8388770" module="true" symbol="Strings"/>
+<entry id="8389280" method="true" symbol="getInitialView"/>
+<entry id="17" method="true" symbol="MainLayout"/>
+<entry id="8388769" module="true" symbol="Rez"/>
+<entry id="8389123" method="true" symbol="onShow"/>
+<entry id="11" object="true" symbol="PongApp"/>
+<entry id="8388702" method="true" symbol="initialize"/>
+<entry field="true" id="21" symbol="AppName"/>
+<entry id="8" object="true" symbol="PongView"/>
+<entry id="8389080" method="true" symbol="onMenu"/>
+<entry id="23" symbol="item_2"/>
+<entry id="22" symbol="item_1"/>
+<entry field="true" id="15" symbol="LauncherIcon"/>
+<entry field="true" id="19" symbol="menu_label_2"/>
+<entry field="true" id="18" symbol="menu_label_1"/>
+<entry id="8389281" method="true" symbol="onStop"/>
+<entry field="true" id="8389065" symbol="locY"/>
+<entry id="8388771" module="true" symbol="Drawables"/>
+<entry id="8389122" method="true" symbol="onLayout"/>
+<entry id="8389279" method="true" symbol="onStart"/>
+<entry field="true" id="14" symbol="id_monkey"/>
+<entry id="8389348" symbol="font"/>
+<entry id="8389347" symbol="color"/>
+<entry id="8389109" method="true" symbol="onMenuItem"/>
+<entry id="13" module="true" symbol="Layouts"/>
+<entry field="true" id="20" symbol="prompt"/>
+<entry id="8389125" method="true" symbol="onHide"/>
+<entry id="8389345" symbol="rezId"/>
+<entry id="8389346" symbol="text"/>
+<entry field="true" id="8389063" symbol="identifier"/>
+<entry id="12" module="true" symbol="Menus"/>
+<entry id="9" object="true" symbol="PongMenuDelegate"/>
+<entry id="8388772" module="true" symbol="Fonts"/>
+</symbolTable>
+<localVars>
+<entry endPc="268436363" name="rez_cmp_local_label_6NWEVJXHFO" stackId="3" startPc="268435975"/>
+<entry endPc="268436363" name="rez_cmp_local_label_6NWEVJXHFO_fontHeight" stackId="4" startPc="268435975"/>
+<entry endPc="268436363" name="rez_cmp_local_label_6NWEVJXHFO_font" stackId="2" startPc="268435975"/>
+<entry endPc="268436363" name="rez_cmp_local_bitmap_id_monkey" stackId="5" startPc="268435975"/>
+</localVars>
+<annotations/>
+<functions>
+<functionEntry name="initialize" parent="PongView">
+<documentation/>
+</functionEntry>
+<functionEntry name="onLayout" parent="PongView">
+<param id="dc"/>
+<documentation><![CDATA[<div class="description"> Load your resources here<br/></div>]]></documentation>
+</functionEntry>
+<functionEntry name="onShow" parent="PongView">
+<documentation><![CDATA[<div class="description"> Called when this View is brought to the foreground. Restore<br/> the state of this View and prepare it to be shown. This includes<br/> loading resources into memory.<br/></div>]]></documentation>
+</functionEntry>
+<functionEntry name="onUpdate" parent="PongView">
+<param id="dc"/>
+<documentation><![CDATA[<div class="description"> Update the view<br/></div>]]></documentation>
+</functionEntry>
+<functionEntry name="onHide" parent="PongView">
+<documentation><![CDATA[<div class="description"> Called when this View is removed from the screen. Save the<br/> state of this View here. This includes freeing resources from<br/> memory.<br/></div>]]></documentation>
+</functionEntry>
+<functionEntry name="initialize" parent="PongMenuDelegate">
+<documentation/>
+</functionEntry>
+<functionEntry name="onMenuItem" parent="PongMenuDelegate">
+<param id="item"/>
+<documentation/>
+</functionEntry>
+<functionEntry name="initialize" parent="PongDelegate">
+<documentation/>
+</functionEntry>
+<functionEntry name="onMenu" parent="PongDelegate">
+<documentation/>
+</functionEntry>
+<functionEntry name="initialize" parent="PongApp">
+<documentation/>
+</functionEntry>
+<functionEntry name="onStart" parent="PongApp">
+<documentation><![CDATA[<div class="description"> onStart() is called on application start up<br/></div>]]></documentation>
+</functionEntry>
+<functionEntry name="onStop" parent="PongApp">
+<documentation><![CDATA[<div class="description"> onStop() is called when your application is exiting<br/></div>]]></documentation>
+</functionEntry>
+<functionEntry name="getInitialView" parent="PongApp">
+<documentation><![CDATA[<div class="description"> Return the initial view of your application here<br/></div>]]></documentation>
+</functionEntry>
+<functionEntry name="initialize" parent="MainMenu">
+<documentation/>
+</functionEntry>
+<functionEntry name="MainLayout" parent="Layouts">
+<param id="dc"/>
+<documentation><![CDATA[<div class="description"> Draw the layout<br/> param The context<br/></div>]]></documentation>
+</functionEntry>
+</functions>
+</debugInfo>
