@@ -8,7 +8,7 @@ class GameView extends Ui.View {
 
     //! Load your resources here
     function onLayout(dc) {
-        setLayout(Rez.Layouts.MainLayout(dc));
+        setLayout(Rez.Layouts.GameLayout(dc));
     }
 
     //! Called when this View is brought to the foreground. Restore
@@ -27,6 +27,12 @@ class GameView extends Ui.View {
     //! state of this View here. This includes freeing resources from
     //! memory.
     function onHide() {
+    }
+    
+    function onKeyPressed(evt) {
+    	if (evt.getKey == Ui.KEY_DOWN) {
+    		Sys.println("Down");
+    	}
     }
 
 }

@@ -7,33 +7,42 @@
 <entry filename="D:\\workspace\\Pong\\source\\PongMenuDelegate.mc" lineNum="8" pc="268435548" symbol="initialize"/>
 <entry filename="D:\\workspace\\Pong\\source\\PongMenuDelegate.mc" lineNum="12" pc="268435569" symbol="onMenuItem"/>
 <entry filename="D:\\workspace\\Pong\\source\\PongMenuDelegate.mc" lineNum="13" pc="268435580" symbol="onMenuItem"/>
-<entry filename="D:\\workspace\\Pong\\source\\PongMenuDelegate.mc" lineNum="16" pc="268435615" symbol="onMenuItem"/>
-<entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="6" pc="268435642" symbol="initialize"/>
-<entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="10" pc="268435663" symbol="onMenu"/>
-<entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="11" pc="268435747" symbol="onMenu"/>
-<entry filename="D:\\workspace\\Pong\\source\\PongApp.mc" lineNum="18" pc="268435759" symbol="getInitialView"/>
-<entry filename="D:\\workspace\\Pong\\source\\Paddle.mc" lineNum="10" pc="268435830" symbol="getPaddleX"/>
-<entry filename="D:\\workspace\\Pong\\source\\Paddle.mc" lineNum="14" pc="268435842" symbol="getPaddleY"/>
-<entry filename="D:\\workspace\\Pong\\source\\Paddle.mc" lineNum="18" pc="268435854" symbol="setPaddleY"/>
-<entry filename="D:\\workspace\\Pong\\source\\GameView.mc" lineNum="6" pc="268435868" symbol="initialize"/>
-<entry filename="D:\\workspace\\Pong\\source\\GameView.mc" lineNum="11" pc="268435889" symbol="onLayout"/>
-<entry filename="D:\\workspace\\Pong\\source\\GameView.mc" lineNum="23" pc="268435932" symbol="onUpdate"/>
-<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="10" pc="268435958" symbol="getBallX"/>
-<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="14" pc="268435970" symbol="getBallY"/>
-<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="18" pc="268435982" symbol="setBallX"/>
-<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="22" pc="268435995" symbol="setBallY"/>
-<entry filename="Rez" lineNum="17" pc="268436009" symbol="initialize"/>
-<entry filename="Rez" lineNum="18" pc="268436027" symbol="initialize"/>
-<entry filename="Rez" lineNum="19" pc="268436079" symbol="initialize"/>
-<entry filename="Rez" lineNum="35" pc="268436134" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="36" pc="268436148" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="37" pc="268436288" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="38" pc="268436303" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="39" pc="268436355" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="40" pc="268436369" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="41" pc="268436509" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="42" pc="268436524" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="43" pc="268436576" symbol="MainLayout"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongMenuDelegate.mc" lineNum="14" pc="268435601" symbol="onMenuItem"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongMenuDelegate.mc" lineNum="16" pc="268435687" symbol="onMenuItem"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="6" pc="268435714" symbol="initialize"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="10" pc="268435735" symbol="onMenu"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongDelegate.mc" lineNum="11" pc="268435819" symbol="onMenu"/>
+<entry filename="D:\\workspace\\Pong\\source\\PongApp.mc" lineNum="18" pc="268435831" symbol="getInitialView"/>
+<entry filename="D:\\workspace\\Pong\\source\\Paddle.mc" lineNum="10" pc="268435902" symbol="getPaddleX"/>
+<entry filename="D:\\workspace\\Pong\\source\\Paddle.mc" lineNum="14" pc="268435914" symbol="getPaddleY"/>
+<entry filename="D:\\workspace\\Pong\\source\\Paddle.mc" lineNum="18" pc="268435926" symbol="setPaddleY"/>
+<entry filename="D:\\workspace\\Pong\\source\\GameView.mc" lineNum="6" pc="268435940" symbol="initialize"/>
+<entry filename="D:\\workspace\\Pong\\source\\GameView.mc" lineNum="11" pc="268435961" symbol="onLayout"/>
+<entry filename="D:\\workspace\\Pong\\source\\GameView.mc" lineNum="23" pc="268436004" symbol="onUpdate"/>
+<entry filename="D:\\workspace\\Pong\\source\\GameView.mc" lineNum="33" pc="268436030" symbol="onKeyPressed"/>
+<entry filename="D:\\workspace\\Pong\\source\\GameView.mc" lineNum="34" pc="268436054" symbol="onKeyPressed"/>
+<entry filename="D:\\workspace\\Pong\\source\\GameDelegate.mc" lineNum="6" pc="268436083" symbol="initialize"/>
+<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="10" pc="268436107" symbol="getBallX"/>
+<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="14" pc="268436119" symbol="getBallY"/>
+<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="18" pc="268436131" symbol="setBallX"/>
+<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="22" pc="268436144" symbol="setBallY"/>
+<entry filename="Rez" lineNum="17" pc="268436158" symbol="initialize"/>
+<entry filename="Rez" lineNum="18" pc="268436176" symbol="initialize"/>
+<entry filename="Rez" lineNum="19" pc="268436228" symbol="initialize"/>
+<entry filename="Rez" lineNum="35" pc="268436283" symbol="GameLayout"/>
+<entry filename="Rez" lineNum="36" pc="268436297" symbol="GameLayout"/>
+<entry filename="Rez" lineNum="37" pc="268436437" symbol="GameLayout"/>
+<entry filename="Rez" lineNum="38" pc="268436452" symbol="GameLayout"/>
+<entry filename="Rez" lineNum="39" pc="268436504" symbol="GameLayout"/>
+<entry filename="Rez" lineNum="49" pc="268436524" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="50" pc="268436538" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="51" pc="268436678" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="52" pc="268436693" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="53" pc="268436745" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="54" pc="268436759" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="55" pc="268436899" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="56" pc="268436914" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="57" pc="268436966" symbol="MainLayout"/>
 </pcToLineNum>
 <symbolTable>
 <entry id="8389124" method="true" symbol="onUpdate"/>
@@ -42,63 +51,70 @@
 <entry field="true" id="8389642" symbol="title"/>
 <entry id="10" object="true" symbol="PongDelegate"/>
 <entry field="true" id="8388611" module="true" symbol="Toybox"/>
-<entry field="true" id="33" symbol="PADDLE_HEIGHT"/>
-<entry id="18" object="true" symbol="MainMenu"/>
+<entry field="true" id="35" symbol="PADDLE_HEIGHT"/>
+<entry id="19" object="true" symbol="MainMenu"/>
 <entry id="8388770" module="true" symbol="Strings"/>
 <entry id="8389280" method="true" symbol="getInitialView"/>
-<entry id="27" symbol="ballY"/>
-<entry id="26" symbol="ballX"/>
-<entry id="19" method="true" symbol="MainLayout"/>
-<entry id="14" object="true" symbol="Ball"/>
+<entry id="29" symbol="ballY"/>
+<entry id="28" symbol="ballX"/>
+<entry id="21" method="true" symbol="MainLayout"/>
+<entry id="15" object="true" symbol="Ball"/>
 <entry id="8388769" module="true" symbol="Rez"/>
 <entry id="8389123" method="true" symbol="onShow"/>
 <entry id="11" object="true" symbol="PongApp"/>
-<entry field="true" id="32" symbol="PADDLE_WIDTH"/>
-<entry field="true" id="34" symbol="PADDLE_X"/>
+<entry field="true" id="34" symbol="PADDLE_WIDTH"/>
+<entry field="true" id="36" symbol="PADDLE_X"/>
 <entry id="8388702" method="true" symbol="initialize"/>
-<entry field="true" id="23" symbol="AppName"/>
-<entry id="37" method="true" symbol="getPaddleY"/>
-<entry id="36" method="true" symbol="getPaddleX"/>
+<entry field="true" id="25" symbol="AppName"/>
+<entry id="39" method="true" symbol="getPaddleY"/>
+<entry id="38" method="true" symbol="getPaddleX"/>
 <entry id="8" object="true" symbol="PongView"/>
 <entry id="8389080" method="true" symbol="onMenu"/>
-<entry id="40" symbol="item_2"/>
-<entry id="39" symbol="item_1"/>
-<entry field="true" id="17" symbol="LauncherIcon"/>
+<entry id="42" symbol="item_2"/>
+<entry id="41" symbol="item_1"/>
+<entry field="true" id="18" symbol="LauncherIcon"/>
 <entry id="8388634" module="true" symbol="Ant"/>
-<entry field="true" id="21" symbol="menu_label_2"/>
-<entry field="true" id="20" symbol="menu_label_1"/>
+<entry field="true" id="23" symbol="menu_label_2"/>
+<entry field="true" id="22" symbol="menu_label_1"/>
+<entry id="8389553" method="true" symbol="onKeyPressed"/>
 <entry id="8389281" method="true" symbol="onStop"/>
 <entry field="true" id="8389065" symbol="locY"/>
 <entry id="8388771" module="true" symbol="Drawables"/>
 <entry id="8389122" method="true" symbol="onLayout"/>
-<entry field="true" id="24" symbol="BALL_WIDTH"/>
+<entry field="true" id="26" symbol="BALL_WIDTH"/>
 <entry id="8389279" method="true" symbol="onStart"/>
+<entry id="14" object="true" symbol="GameDelegate"/>
 <entry id="8389348" symbol="font"/>
-<entry id="35" symbol="paddleY"/>
+<entry id="37" symbol="paddleY"/>
 <entry id="8389347" symbol="color"/>
-<entry id="29" method="true" symbol="getBallY"/>
-<entry id="28" method="true" symbol="getBallX"/>
+<entry id="31" method="true" symbol="getBallY"/>
+<entry id="30" method="true" symbol="getBallX"/>
+<entry id="20" method="true" symbol="GameLayout"/>
 <entry id="8389109" method="true" symbol="onMenuItem"/>
-<entry field="true" id="25" symbol="BALL_HEIGHT"/>
-<entry id="16" module="true" symbol="Layouts"/>
-<entry field="true" id="22" symbol="prompt"/>
+<entry field="true" id="27" symbol="BALL_HEIGHT"/>
+<entry id="17" module="true" symbol="Layouts"/>
+<entry id="43" symbol="Sys"/>
+<entry field="true" id="24" symbol="prompt"/>
 <entry id="8389125" method="true" symbol="onHide"/>
 <entry id="8389346" symbol="text"/>
 <entry id="13" object="true" symbol="GameView"/>
-<entry id="15" module="true" symbol="Menus"/>
-<entry id="31" method="true" symbol="setBallY"/>
-<entry id="30" method="true" symbol="setBallX"/>
+<entry id="16" module="true" symbol="Menus"/>
+<entry id="33" method="true" symbol="setBallY"/>
+<entry id="32" method="true" symbol="setBallX"/>
 <entry id="9" object="true" symbol="PongMenuDelegate"/>
-<entry id="38" method="true" symbol="setPaddleY"/>
+<entry id="40" method="true" symbol="setPaddleY"/>
 <entry id="8388772" module="true" symbol="Fonts"/>
 </symbolTable>
 <localVars>
-<entry endPc="268436603" name="rez_cmp_local_label_958MQH8HVA" stackId="3" startPc="268436134"/>
-<entry endPc="268436603" name="rez_cmp_local_label_RN5FOB48IT_font" stackId="5" startPc="268436134"/>
-<entry endPc="268436603" name="rez_cmp_local_label_958MQH8HVA_font" stackId="2" startPc="268436134"/>
-<entry endPc="268436603" name="rez_cmp_local_label_RN5FOB48IT" stackId="6" startPc="268436134"/>
-<entry endPc="268436603" name="rez_cmp_local_label_RN5FOB48IT_fontHeight" stackId="7" startPc="268436134"/>
-<entry endPc="268436603" name="rez_cmp_local_label_958MQH8HVA_fontHeight" stackId="4" startPc="268436134"/>
+<entry endPc="268436521" name="rez_cmp_local_label_ZW0XCXNZ4I" stackId="3" startPc="268436283"/>
+<entry endPc="268436521" name="rez_cmp_local_label_ZW0XCXNZ4I_font" stackId="2" startPc="268436283"/>
+<entry endPc="268436521" name="rez_cmp_local_label_ZW0XCXNZ4I_fontHeight" stackId="4" startPc="268436283"/>
+<entry endPc="268436993" name="rez_cmp_local_label_J5TRTOZOD6_font" stackId="5" startPc="268436524"/>
+<entry endPc="268436993" name="rez_cmp_local_label_J5TRTOZOD6" stackId="6" startPc="268436524"/>
+<entry endPc="268436993" name="rez_cmp_local_label_LQYSWIA748_font" stackId="2" startPc="268436524"/>
+<entry endPc="268436993" name="rez_cmp_local_label_LQYSWIA748" stackId="3" startPc="268436524"/>
+<entry endPc="268436993" name="rez_cmp_local_label_J5TRTOZOD6_fontHeight" stackId="7" startPc="268436524"/>
+<entry endPc="268436993" name="rez_cmp_local_label_LQYSWIA748_fontHeight" stackId="4" startPc="268436524"/>
 </localVars>
 <annotations/>
 <functions>
@@ -168,6 +184,16 @@
 <functionEntry name="onHide" parent="GameView">
 <documentation><![CDATA[<div class="description"> Called when this View is removed from the screen. Save the<br/> state of this View here. This includes freeing resources from<br/> memory.<br/></div>]]></documentation>
 </functionEntry>
+<functionEntry name="onKeyPressed" parent="GameView">
+<param id="evt"/>
+<documentation/>
+</functionEntry>
+<functionEntry name="initialize" parent="GameDelegate">
+<documentation/>
+</functionEntry>
+<functionEntry name="onMenu" parent="GameDelegate">
+<documentation/>
+</functionEntry>
 <functionEntry name="getBallX" parent="Ball">
 <documentation/>
 </functionEntry>
@@ -184,6 +210,10 @@
 </functionEntry>
 <functionEntry name="initialize" parent="MainMenu">
 <documentation/>
+</functionEntry>
+<functionEntry name="GameLayout" parent="Layouts">
+<param id="dc"/>
+<documentation><![CDATA[<div class="description"> Draw the layout<br/> param The context<br/></div>]]></documentation>
 </functionEntry>
 <functionEntry name="MainLayout" parent="Layouts">
 <param id="dc"/>
