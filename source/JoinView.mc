@@ -1,20 +1,15 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
 
-class GameView extends Ui.View {
+class JoinView extends Ui.View {
 
-	var paddleOne;
-	var paddleTwo;
-	var delegate;
-
-    function initialize(delegate) {
+    function initialize() {
         View.initialize();
-        delegate = delegate;
     }
 
     //! Load your resources here
     function onLayout(dc) {
-        setLayout(Rez.Layouts.GameLayout(dc));
+        setLayout(Rez.Layouts.JoinLayout(dc));   
     }
 
     //! Called when this View is brought to the foreground. Restore
@@ -27,10 +22,6 @@ class GameView extends Ui.View {
     function onUpdate(dc) {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
-        dc.clear();
-        paddleOne = delegate.getPaddleOne();
-        paddleTwo = delegate.getPaddleTwo();
-        dc.fillRectangle(paddleOne.PADDLE_X, paddleOne.getPaddleY(), paddleOne.PADDLE_WIDTH, paddleOne.PADDLE_HEIGHT);
     }
 
     //! Called when this View is removed from the screen. Save the
