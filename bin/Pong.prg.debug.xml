@@ -15,25 +15,31 @@
 <entry filename="D:\\workspace\\Pong\\source\\Paddle.mc" lineNum="10" pc="268435830" symbol="getPaddleX"/>
 <entry filename="D:\\workspace\\Pong\\source\\Paddle.mc" lineNum="14" pc="268435842" symbol="getPaddleY"/>
 <entry filename="D:\\workspace\\Pong\\source\\Paddle.mc" lineNum="18" pc="268435854" symbol="setPaddleY"/>
-<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="10" pc="268435868" symbol="getBallX"/>
-<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="14" pc="268435880" symbol="getBallY"/>
-<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="18" pc="268435892" symbol="setBallX"/>
-<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="22" pc="268435905" symbol="setBallY"/>
-<entry filename="Rez" lineNum="16" pc="268435919" symbol="initialize"/>
-<entry filename="Rez" lineNum="17" pc="268435937" symbol="initialize"/>
-<entry filename="Rez" lineNum="18" pc="268435989" symbol="initialize"/>
-<entry filename="Rez" lineNum="35" pc="268436044" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="36" pc="268436058" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="37" pc="268436198" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="38" pc="268436213" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="39" pc="268436265" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="40" pc="268436353" symbol="MainLayout"/>
-<entry filename="Rez" lineNum="41" pc="268436405" symbol="MainLayout"/>
+<entry filename="D:\\workspace\\Pong\\source\\GameView.mc" lineNum="6" pc="268435868" symbol="initialize"/>
+<entry filename="D:\\workspace\\Pong\\source\\GameView.mc" lineNum="11" pc="268435889" symbol="onLayout"/>
+<entry filename="D:\\workspace\\Pong\\source\\GameView.mc" lineNum="23" pc="268435932" symbol="onUpdate"/>
+<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="10" pc="268435958" symbol="getBallX"/>
+<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="14" pc="268435970" symbol="getBallY"/>
+<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="18" pc="268435982" symbol="setBallX"/>
+<entry filename="D:\\workspace\\Pong\\source\\Ball.mc" lineNum="22" pc="268435995" symbol="setBallY"/>
+<entry filename="Rez" lineNum="17" pc="268436009" symbol="initialize"/>
+<entry filename="Rez" lineNum="18" pc="268436027" symbol="initialize"/>
+<entry filename="Rez" lineNum="19" pc="268436079" symbol="initialize"/>
+<entry filename="Rez" lineNum="35" pc="268436134" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="36" pc="268436148" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="37" pc="268436288" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="38" pc="268436303" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="39" pc="268436355" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="40" pc="268436369" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="41" pc="268436509" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="42" pc="268436524" symbol="MainLayout"/>
+<entry filename="Rez" lineNum="43" pc="268436576" symbol="MainLayout"/>
 </pcToLineNum>
 <symbolTable>
 <entry id="8389124" method="true" symbol="onUpdate"/>
 <entry id="8389349" symbol="justification"/>
 <entry id="12" object="true" symbol="Paddle"/>
+<entry field="true" id="8389642" symbol="title"/>
 <entry id="10" object="true" symbol="PongDelegate"/>
 <entry field="true" id="8388611" module="true" symbol="Toybox"/>
 <entry field="true" id="33" symbol="PADDLE_HEIGHT"/>
@@ -43,7 +49,7 @@
 <entry id="27" symbol="ballY"/>
 <entry id="26" symbol="ballX"/>
 <entry id="19" method="true" symbol="MainLayout"/>
-<entry id="13" object="true" symbol="Ball"/>
+<entry id="14" object="true" symbol="Ball"/>
 <entry id="8388769" module="true" symbol="Rez"/>
 <entry id="8389123" method="true" symbol="onShow"/>
 <entry id="11" object="true" symbol="PongApp"/>
@@ -67,7 +73,6 @@
 <entry id="8389122" method="true" symbol="onLayout"/>
 <entry field="true" id="24" symbol="BALL_WIDTH"/>
 <entry id="8389279" method="true" symbol="onStart"/>
-<entry field="true" id="16" symbol="id_monkey"/>
 <entry id="8389348" symbol="font"/>
 <entry id="35" symbol="paddleY"/>
 <entry id="8389347" symbol="color"/>
@@ -75,13 +80,12 @@
 <entry id="28" method="true" symbol="getBallX"/>
 <entry id="8389109" method="true" symbol="onMenuItem"/>
 <entry field="true" id="25" symbol="BALL_HEIGHT"/>
-<entry id="15" module="true" symbol="Layouts"/>
+<entry id="16" module="true" symbol="Layouts"/>
 <entry field="true" id="22" symbol="prompt"/>
 <entry id="8389125" method="true" symbol="onHide"/>
-<entry id="8389345" symbol="rezId"/>
 <entry id="8389346" symbol="text"/>
-<entry field="true" id="8389063" symbol="identifier"/>
-<entry id="14" module="true" symbol="Menus"/>
+<entry id="13" object="true" symbol="GameView"/>
+<entry id="15" module="true" symbol="Menus"/>
 <entry id="31" method="true" symbol="setBallY"/>
 <entry id="30" method="true" symbol="setBallX"/>
 <entry id="9" object="true" symbol="PongMenuDelegate"/>
@@ -89,10 +93,12 @@
 <entry id="8388772" module="true" symbol="Fonts"/>
 </symbolTable>
 <localVars>
-<entry endPc="268436432" name="rez_cmp_local_label_67SWWVO1CU" stackId="3" startPc="268436044"/>
-<entry endPc="268436432" name="rez_cmp_local_bitmap_id_monkey" stackId="5" startPc="268436044"/>
-<entry endPc="268436432" name="rez_cmp_local_label_67SWWVO1CU_fontHeight" stackId="4" startPc="268436044"/>
-<entry endPc="268436432" name="rez_cmp_local_label_67SWWVO1CU_font" stackId="2" startPc="268436044"/>
+<entry endPc="268436603" name="rez_cmp_local_label_5WA3YMO1X8" stackId="3" startPc="268436134"/>
+<entry endPc="268436603" name="rez_cmp_local_label_8MXJHZ2FND_fontHeight" stackId="7" startPc="268436134"/>
+<entry endPc="268436603" name="rez_cmp_local_label_5WA3YMO1X8_font" stackId="2" startPc="268436134"/>
+<entry endPc="268436603" name="rez_cmp_local_label_5WA3YMO1X8_fontHeight" stackId="4" startPc="268436134"/>
+<entry endPc="268436603" name="rez_cmp_local_label_8MXJHZ2FND_font" stackId="5" startPc="268436134"/>
+<entry endPc="268436603" name="rez_cmp_local_label_8MXJHZ2FND" stackId="6" startPc="268436134"/>
 </localVars>
 <annotations/>
 <functions>
@@ -144,6 +150,23 @@
 <functionEntry name="setPaddleY" parent="Paddle">
 <param id="y"/>
 <documentation/>
+</functionEntry>
+<functionEntry name="initialize" parent="GameView">
+<documentation/>
+</functionEntry>
+<functionEntry name="onLayout" parent="GameView">
+<param id="dc"/>
+<documentation><![CDATA[<div class="description"> Load your resources here<br/></div>]]></documentation>
+</functionEntry>
+<functionEntry name="onShow" parent="GameView">
+<documentation><![CDATA[<div class="description"> Called when this View is brought to the foreground. Restore<br/> the state of this View and prepare it to be shown. This includes<br/> loading resources into memory.<br/></div>]]></documentation>
+</functionEntry>
+<functionEntry name="onUpdate" parent="GameView">
+<param id="dc"/>
+<documentation><![CDATA[<div class="description"> Update the view<br/></div>]]></documentation>
+</functionEntry>
+<functionEntry name="onHide" parent="GameView">
+<documentation><![CDATA[<div class="description"> Called when this View is removed from the screen. Save the<br/> state of this View here. This includes freeing resources from<br/> memory.<br/></div>]]></documentation>
 </functionEntry>
 <functionEntry name="getBallX" parent="Ball">
 <documentation/>
