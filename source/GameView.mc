@@ -1,6 +1,18 @@
 using Toybox.WatchUi as Ui;
+using Toybox.Timer as Timer;
 
 class GameView extends Ui.View {
+
+	// Display Settings
+	hidden var height;
+	hidden var width;
+
+	// Ball Settings
+	hidden var ball;
+	
+	// Timer
+	hidden var timer;
+	const updateFrequency = 100;
 
     function initialize() {
         View.initialize();
@@ -9,6 +21,14 @@ class GameView extends Ui.View {
     //! Load your resources here
     function onLayout(dc) {
         setLayout(Rez.Layouts.GameLayout(dc));
+        
+        height = dc.getHeight();
+        width = dc.getWidth();
+        
+        ball = new Ball(height, width);
+        
+        timer = new Timer.Timer();
+        timer.start(method(:update), updateFrequency, true);
     }
 
     //! Called when this View is brought to the foreground. Restore
@@ -21,6 +41,13 @@ class GameView extends Ui.View {
     function onUpdate(dc) {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
+        
+        //clear everything on screen
+        dc.clear();
+        
+        // draw game graphics
+        ball.updatePosition();
+        dc.drawCircle(ball.getBallX(), ball.getBallY(), ball.RADIUS);
     }
 
     //! Called when this View is removed from the screen. Save the
@@ -33,6 +60,13 @@ class GameView extends Ui.View {
     	if (evt.getKey == Ui.KEY_DOWN) {
     		Sys.println("Down");
     	}
+    }
+    
+    //! This method is hooked in to the start function of the timer
+    //! to allow the onUpdate function to get called at the specified
+    //! updateFrequency
+    function update() {
+    	Ui.requestUpdate();
     }
 
 }
