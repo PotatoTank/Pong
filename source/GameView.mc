@@ -1,11 +1,15 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Timer as Timer;
+using Toybox.Graphics as Gfx;
 
-class GameView extends Ui.View {
+class GameView extendssing Toybox.Timer as Ui.View {
 
 	// Display Settings
 	hidden var height;
 	hidden var width;
+	var paddleOne;
+	var paddleTwo;
+	var delegate;
 
 	// Ball Settings
 	hidden var ball;
@@ -14,8 +18,8 @@ class GameView extends Ui.View {
 	hidden var timer;
 	const updateFrequency = 100;
 
-    function initialize() {
         View.initialize();
+        delegate = delegate;
     }
 
     //! Load your resources here
@@ -43,8 +47,10 @@ class GameView extends Ui.View {
         View.onUpdate(dc);
         
         //clear everything on screen
-        dc.clear();
-        
+        dc.clear();        
+        paddleOne = delegate.getPaddleOne();
+        paddleTwo = delegate.getPaddleTwo();
+        dc.fillRectangle(paddleOne.PADDLE_X, paddleOne.getPaddleY(), paddleOne.PADDLE_WIDTH, paddleOne.PADDLE_HEIGHT);
         // draw game graphics
         ball.updatePosition();
         dc.drawCircle(ball.getBallX(), ball.getBallY(), ball.RADIUS);
@@ -55,11 +61,7 @@ class GameView extends Ui.View {
     //! memory.
     function onHide() {
     }
-    
-    function onKeyPressed(evt) {
-    	if (evt.getKey == Ui.KEY_DOWN) {
-    		Sys.println("Down");
-    	}
+
     }
     
     //! This method is hooked in to the start function of the timer
@@ -67,6 +69,4 @@ class GameView extends Ui.View {
     //! updateFrequency
     function update() {
     	Ui.requestUpdate();
-    }
-
 }
