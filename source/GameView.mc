@@ -2,11 +2,12 @@ using Toybox.WatchUi as Ui;
 using Toybox.Timer as Timer;
 using Toybox.Graphics as Gfx;
 
-class GameView extendssing Toybox.Timer as Ui.View {
+class GameView extends Ui.View {
 
 	// Display Settings
 	hidden var height;
 	hidden var width;
+	
 	var paddleOne;
 	var paddleTwo;
 	var delegate;
@@ -18,8 +19,8 @@ class GameView extendssing Toybox.Timer as Ui.View {
 	hidden var timer;
 	const updateFrequency = 100;
 
+	function initialize() {
         View.initialize();
-        delegate = delegate;
     }
 
     //! Load your resources here
@@ -48,9 +49,9 @@ class GameView extendssing Toybox.Timer as Ui.View {
         
         //clear everything on screen
         dc.clear();        
-        paddleOne = delegate.getPaddleOne();
-        paddleTwo = delegate.getPaddleTwo();
-        dc.fillRectangle(paddleOne.PADDLE_X, paddleOne.getPaddleY(), paddleOne.PADDLE_WIDTH, paddleOne.PADDLE_HEIGHT);
+        //paddleOne = delegate.getPaddleOne();
+        //paddleTwo = delegate.getPaddleTwo();
+        //dc.fillRectangle(paddleOne.PADDLE_X, paddleOne.getPaddleY(), paddleOne.PADDLE_WIDTH, paddleOne.PADDLE_HEIGHT);
         // draw game graphics
         ball.updatePosition();
         dc.drawCircle(ball.getBallX(), ball.getBallY(), ball.RADIUS);
