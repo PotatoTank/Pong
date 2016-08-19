@@ -1,10 +1,21 @@
-class Paddle
-{
+class Paddle {
+	static const PADDLE_ONE_X = 45;
+	static const PADDLE_TWO_X = 100;
+	
 	const PADDLE_WIDTH = 5;
 	const PADDLE_HEIGHT = 35;
-	const PADDLE_X = 45;
 	
-    hidden var paddleY = 0;
+	hidden var width;
+	hidden var height;
+	hidden var paddleX;
+	hidden var paddleY;
+    
+    function initialize(paddleX, paddleY) {
+    	self.paddleX = paddleX;
+    	self.paddleY = paddleY;
+    	width = PADDLE_WIDTH;
+    	height = PADDLE_HEIGHT;
+    }
     
     function getPaddleY(){
     	return paddleY;

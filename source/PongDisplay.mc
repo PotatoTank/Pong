@@ -16,7 +16,7 @@ class PongDisplay extends Ant.GenericChannel {
     var pastEventCount;
     var deviceCfg;
     
-    var payload;
+    var payloadRx;
 
     function initialize() {
         // Get the channel
@@ -25,17 +25,17 @@ class PongDisplay extends Ant.GenericChannel {
 
         // Set the configuration
         deviceCfg = new Ant.DeviceConfig( {
-            :deviceNumber => 1,                 // Wildcard our search
+            :deviceNumber => 0,                 // Wildcard our search
             :deviceType => DEVICE_TYPE,
             :transmissionType => TRANSMISSION_TYPE,
             :messagePeriod => PERIOD,
             :radioFrequency => RADIO_FREQUENCY,
-            :searchTimeoutLowPriority => 10,    // Timeout in 25s
+            :searchTimeoutLowPriority => 4,     // Timeout in 10s
             :searchThreshold => 0} );           // Pair to all transmitting sensors
         GenericChannel.setDeviceConfig(deviceCfg);
 
         searching = true;
-        payload = new [8];
+        payloadRx = new [8];
     }
 
     function open() {
@@ -46,11 +46,11 @@ class PongDisplay extends Ant.GenericChannel {
     }
 
 	function getBallX() {
-		return payload[1];
+		return payloadRx[1];
 	}
 	
 	function getBallY() {
-		return payload[2];
+		return payloadRx[2];
 	}
 
     function closeSensor() {
@@ -59,7 +59,7 @@ class PongDisplay extends Ant.GenericChannel {
 
     function onMessage(msg) {
         // Parse the payload
-        payload = msg.getPayload();
-		Sys.println(payload);
+        payloadRx = msg.getPayload();
+		Sys.println(payloadRx);
     }
 }

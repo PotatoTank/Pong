@@ -1,8 +1,7 @@
 using Toybox.Math;
 using Toybox.System;
 
-class Ball
-{
+class Ball {
 	const RADIUS = 10;
 	
     hidden var ballX;

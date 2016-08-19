@@ -2,6 +2,7 @@ using Toybox.WatchUi as Ui;
 using Toybox.Timer as Timer;
 using Toybox.Graphics as Gfx;
 
+//! Game view for the host.
 class GameView extends Ui.View {
 
 	// Display Settings

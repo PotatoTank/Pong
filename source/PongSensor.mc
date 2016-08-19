@@ -4,13 +4,14 @@ using Toybox.Time as Time;
 
 class PongSensor extends Ant.GenericChannel {
     const DEVICE_TYPE = 1;
-    const PERIOD = 1966;
+    const PERIOD = 1966; // 10 Hz
     const TRANSMISSION_TYPE = 1;
     const RADIO_FREQUENCY = 25;
 
     hidden var chanAssign;
 
-	var payload;
+	var payloadTx;
+	var payloadRx;
 	var message;
 
     var data;
@@ -19,22 +20,16 @@ class PongSensor extends Ant.GenericChannel {
     var deviceCfg;
 
     class PongData {
-        var eventCount;
-        var utcTimeSet;
-        var supportsAntFs;
-        var measurementInterval;
-        var totalHemoConcentration;
-        var previousHemoPercent;
-        var currentHemoPercent;
+    	var ballX;
+    	var ballY;
+    	var paddleOneY;
+    	var paddleTwoY;
+    	var paddleOneScore;
+    	var paddleTwoScore;
+    	var state;
 
         function initialize() {
-            eventCount = 0;
-            utcTimeSet = false;
-            supportsAntFs = false;
-            measurementInterval = 0;
-            totalHemoConcentration = 0;
-            previousHemoPercent = 0;
-            currentHemoPercent = 0;
+            // TODO: initialize variables
         }
     }
 
@@ -45,10 +40,8 @@ class PongSensor extends Ant.GenericChannel {
         static const INVALID_HEMO_PERCENT = 0x3FF;
 
         enum {
-            INTERVAL_25 = 1,
-            INTERVAL_50 = 2,
-            INTERVAL_1 = 3,
-            INTERVAL_2 = 4
+            // TODO: define game states. ie pause, p1 win, p2 win, play
+            FILL = 1
         }
 
         function parse(payload, data) {
@@ -109,15 +102,6 @@ class PongSensor extends Ant.GenericChannel {
         }
     }
 
-    class CommandDataPage {
-        static const PAGE_NUMBER = 0x10;
-        static const CMD_SET_TIME = 0x00;
-
-        static function setTime(payload) {
-        }
-
-    }
-
     function initialize() {
         // Get the channel
         chanAssign = new Ant.ChannelAssignment(Ant.CHANNEL_TYPE_TX_NOT_RX, Ant.NETWORK_PUBLIC);
@@ -130,11 +114,12 @@ class PongSensor extends Ant.GenericChannel {
             :transmissionType => TRANSMISSION_TYPE,
             :messagePeriod => PERIOD,
             :radioFrequency => RADIO_FREQUENCY,
-            :searchTimeoutLowPriority => 10,    // Timeout in 25s
-            :searchThreshold => 0} );           // Pair to all transmitting sensors
+            :searchTimeoutLowPriority => 4} ); // 10 second time out.
         GenericChannel.setDeviceConfig(deviceCfg);
 
         searching = true;
+        payloadTx = new [8];
+        payloadRx = new [8];
         message = new Ant.Message();
     }
 
@@ -144,18 +129,16 @@ class PongSensor extends Ant.GenericChannel {
 
         searching = true;
         
-        payload = new [8];
-        payload[0] = 0x01;
-        payload[1] = 0x02;
-        payload[2] = 0x03;
-        payload[3] = 0x04;
-        payload[4] = 0x05;
-        payload[5] = 0x06;
-        payload[6] = 0x07;
-
-        payload[7] = 0x08;
+        payloadTx[0] = 0x01;
+        payloadTx[1] = 0x02;
+        payloadTx[2] = 0x03;
+        payloadTx[3] = 0x04;
+        payloadTx[4] = 0x05;
+        payloadTx[5] = 0x06;
+        payloadTx[6] = 0x07;
+        payloadTx[7] = 0x08;
         
-        message.setPayload(payload);
+        message.setPayload(payloadTx);
         
         GenericChannel.sendBroadcast(message);
     }
@@ -165,45 +148,16 @@ class PongSensor extends Ant.GenericChannel {
     }
 
 	function update(ballX, ballY) {
-		payload[1] = ballX;
-		payload[2] = ballY;
+		payloadTx[1] = ballX;
+		payloadTx[2] = ballY;
 		
-		message.setPayload(payload);
+		message.setPayload(payloadTx);
 		GenericChannel.sendBroadcast(message);
 	}
 
     function onMessage(msg) {
-        // Parse the payload
-        var payload = msg.getPayload();
+        // Parse the rx payload.
+        payloadRx = msg.getPayload();
 
-        if (Ant.MSG_ID_BROADCAST_DATA == msg.messageId) {
-            if (MuscleOxygenDataPage.PAGE_NUMBER == (payload[0].toNumber() & 0xFF)) {
-                // Were we searching?
-                if (searching) {
-                    searching = false;
-                    // Update our device configuration primarily to see the device number of the sensor we paired to
-                    deviceCfg = GenericChannel.getDeviceConfig();
-                }
-                var dp = new MuscleOxygenDataPage();
-                dp.parse(msg.getPayload(), data);
-                // Check if the data has changed and we need to update the ui
-                if (pastEventCount != data.eventCount) {
-                    Ui.requestUpdate();
-                    pastEventCount = data.eventCount;
-                }
-            }
-        } else if (Ant.MSG_ID_CHANNEL_RESPONSE_EVENT == msg.messageId) {
-            if (Ant.MSG_ID_RF_EVENT == (payload[0] & 0xFF)) {
-                if (Ant.MSG_CODE_EVENT_CHANNEL_CLOSED == (payload[1] & 0xFF)) {
-                    // Channel closed, re-open
-                    open();
-                } else if (Ant.MSG_CODE_EVENT_RX_FAIL_GO_TO_SEARCH  == (payload[1] & 0xFF)) {
-                    searching = true;
-                    Ui.requestUpdate();
-                }
-            } else {
-                //It is a channel response.
-            }
-        }
     }
 }
