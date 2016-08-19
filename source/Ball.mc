@@ -20,8 +20,8 @@ class Ball
     	setBallX(width/2);
     	setBallY(height/2);
     	
-    	setDx(Random.getRandomNumber(-5, 5));
-    	setDy(Random.getRandomNumber(-5, 5));
+    	setDx(Random.getRandomNumber(-20, 20));
+    	setDy(Random.getRandomNumber(-10, 10));
     }
     
     function updatePosition(){
@@ -30,7 +30,7 @@ class Ball
     		dx = -dx;
     	}
     	
-    	if (ballX + RADIUS < 0) {
+    	if (ballX - RADIUS < 0) {
     		dx = -dx;
     	}
     	
@@ -38,7 +38,7 @@ class Ball
     		dy = -dy;
     	}
     	
-    	if (ballY + RADIUS < 0) {
+    	if (ballY - RADIUS < 0) {
     		dy = -dy;
     	}
     

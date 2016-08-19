@@ -2,7 +2,7 @@ using Toybox.WatchUi as Ui;
 using Toybox.Timer as Timer;
 using Toybox.Graphics as Gfx;
 
-class GameView extends Ui.View {
+class GameViewDisplay extends Ui.View {
 
 	// Display Settings
 	hidden var height;
@@ -12,7 +12,7 @@ class GameView extends Ui.View {
 	var paddleTwo;
 	var delegate;
 	
-	var sensor;
+	var display;
 
 	// Ball Settings
 	hidden var ball;
@@ -21,9 +21,9 @@ class GameView extends Ui.View {
 	hidden var timer;
 	const updateFrequency = 100;
 
-	function initialize(sensor) {
+	function initialize(display) {
         View.initialize();
-        self.sensor = sensor;
+        self.display = display;
     }
 
     //! Load your resources here
@@ -56,10 +56,10 @@ class GameView extends Ui.View {
         //paddleTwo = delegate.getPaddleTwo();
         //dc.fillRectangle(paddleOne.PADDLE_X, paddleOne.getPaddleY(), paddleOne.PADDLE_WIDTH, paddleOne.PADDLE_HEIGHT);
         // draw game graphics
-        ball.updatePosition();
+        ball.setBallX(display.getBallX());
+        ball.setBallY(display.getBallY());
         dc.drawCircle(ball.getBallX(), ball.getBallY(), ball.RADIUS);
         
-        sensor.update(ball.getBallX(), ball.getBallY());
     }
 
     //! Called when this View is removed from the screen. Save the
@@ -67,12 +67,11 @@ class GameView extends Ui.View {
     //! memory.
     function onHide() {
     }
-
-    }
     
     //! This method is hooked in to the start function of the timer
     //! to allow the onUpdate function to get called at the specified
     //! updateFrequency
     function update() {
     	Ui.requestUpdate();
+    }
 }
