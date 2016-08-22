@@ -30,14 +30,13 @@ class PongSensor extends Ant.GenericChannel {
 
         function initialize() {
             // TODO: initialize variables
+            paddleOneScore = 0;
+            paddleTwoScore = 0;
         }
     }
 
     class PongDataPage {
         static const PAGE_NUMBER = 1;
-        static const AMBIENT_LIGHT_HIGH = 0x3FE;
-        static const INVALID_HEMO = 0xFFF;
-        static const INVALID_HEMO_PERCENT = 0x3FF;
 
         enum {
             // TODO: define game states. ie pause, p1 win, p2 win, play
@@ -121,6 +120,8 @@ class PongSensor extends Ant.GenericChannel {
         payloadTx = new [8];
         payloadRx = new [8];
         message = new Ant.Message();
+        
+        data = new PongData();
     }
 
     function open() {

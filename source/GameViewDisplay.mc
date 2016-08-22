@@ -59,7 +59,7 @@ class GameViewDisplay extends Ui.View {
         // draw game graphics
         ball.setBallX(display.getBallX());
         ball.setBallY(display.getBallY());
-        dc.drawCircle(ball.getBallX(), ball.getBallY(), ball.RADIUS);
+        dc.drawCircle(0, 0, ball.RADIUS);
         
     }
 
