@@ -9,7 +9,7 @@ class GameView extends Ui.View {
 	hidden var height;
 	hidden var width;
 	
-	var paddleOne;
+	var paddleOne; // paddleOne should not be in this class, should be handled by GameDelegate
 	var paddleTwo;
 	var delegate;
 	

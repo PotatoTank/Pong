@@ -1,3 +1,4 @@
+//! Data sent in a Pong data page.
 class PongData {
 	var ballX;
 	var ballY;

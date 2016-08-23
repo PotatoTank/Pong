@@ -2,7 +2,7 @@ using Toybox.Math;
 using Toybox.System;
 
 class Ball {
-	const RADIUS = 10;
+	hidden const RADIUS = 10;
 	
     hidden var ballX;
     hidden var ballY;

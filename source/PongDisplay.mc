@@ -11,12 +11,13 @@ class PongDisplay extends Ant.GenericChannel {
 
     hidden var chanAssign;
 
-    var data;
-    var searching;
-    var pastEventCount;
-    var deviceCfg;
+    hidden var data;
+    hidden var searching;
+    hidden var pastEventCount;
+    hidden var deviceCfg;
     
-    var payloadRx;
+    hidden var payoadTx;
+    hidden var payloadRx;
 
     function initialize() {
         // Get the channel
@@ -35,6 +36,7 @@ class PongDisplay extends Ant.GenericChannel {
         GenericChannel.setDeviceConfig(deviceCfg);
 
         searching = true;
+        payloadTx = new [8];
         payloadRx = new [8];
     }
 

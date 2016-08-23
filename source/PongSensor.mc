@@ -11,15 +11,15 @@ class PongSensor extends Ant.GenericChannel {
 
     hidden var chanAssign;
 
-	var payloadTx;
-	var payloadRx;
-	var message;
+	hidden var payloadTx;
+	hidden var payloadRx;
+	hidden var message;
 
-    var data;
-    var dataPage;
-    var searching;
-    var pastEventCount;
-    var deviceCfg;
+    hidden var data;
+    hidden var dataPage;
+    hidden var searching;
+    hidden var pastEventCount;
+    hidden var deviceCfg;
 
     function initialize() {
         // Get the channel
@@ -40,7 +40,6 @@ class PongSensor extends Ant.GenericChannel {
         payloadTx = new [8];
         payloadRx = new [8];
         message = new Ant.Message();
-        
         data = new PongData();
         dataPage = new PongDataPage();
     }
@@ -70,8 +69,10 @@ class PongSensor extends Ant.GenericChannel {
     }
 
 	function update(ballX, ballY) {
-		payloadTx[1] = ballX;
-		payloadTx[2] = ballY;
+		data.ballX = ballX;
+		data.ballY = ballY;
+		
+		dataPage.set(data, payloadTx);
 		
 		message.setPayload(payloadTx);
 		GenericChannel.sendBroadcast(message);
@@ -80,6 +81,5 @@ class PongSensor extends Ant.GenericChannel {
     function onMessage(msg) {
         // Parse the rx payload.
         payloadRx = msg.getPayload();
-
     }
 }

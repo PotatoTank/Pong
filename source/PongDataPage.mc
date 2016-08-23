@@ -1,3 +1,4 @@
+//! A Pong data page.
 class PongDataPage {
     static const PAGE_NUMBER = 1;
 

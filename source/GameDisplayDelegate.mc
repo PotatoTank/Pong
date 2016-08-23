@@ -2,8 +2,8 @@ using Toybox.WatchUi as Ui;
 using Toybox.System as Sys;
 using Toybox.Timer as Timer;
 
-//! Controller for Paddle One.
-class GameDelegate extends Ui.BehaviorDelegate {
+//! Controller for Paddle Two.
+class GameDisplayDelegate extends Ui.BehaviorDelegate {
 
 	hidden var paddleOne;
 	hidden var paddleTwo;
@@ -21,11 +21,11 @@ class GameDelegate extends Ui.BehaviorDelegate {
     function onKeyPressed(evt) {
     	if (evt.getKey() == Ui.KEY_DOWN) {
     		Sys.println("Down");
-    		paddleOne.setPaddleY(paddleOne.getPaddleY() - 1);
+    		paddleTwo.setPaddleY(paddleTwo.getPaddleY() - 1);
     	}
     	else if (evt.getKey() == Ui.KEY_UP) {
     		Sys.println("Up");
-    		paddleOne.setPaddleY(paddleOne.getPaddleY() + 1);
+    		paddleTwo.setPaddleY(paddleTwo.getPaddleY() + 1);
     	}
     }
 

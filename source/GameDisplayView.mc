@@ -3,7 +3,7 @@ using Toybox.Timer as Timer;
 using Toybox.Graphics as Gfx;
 
 //! Game view for the display.
-class GameViewDisplay extends Ui.View {
+class GameDisplayView extends Ui.View {
 
 	// Display Settings
 	hidden var height;
@@ -34,7 +34,7 @@ class GameViewDisplay extends Ui.View {
         height = dc.getHeight();
         width = dc.getWidth();
         
-        ball = new Ball(height, width);
+        ball = new Ball(height, width);	// we should get the ball in the Delegate classes as well.
         
         timer = new Timer.Timer();
         timer.start(method(:update), updateFrequency, true);
