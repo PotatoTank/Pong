@@ -3,7 +3,7 @@ using Toybox.System;
 
 //! The ball in Pong.
 class Ball {
-	hidden const RADIUS = 10;
+	const RADIUS = 10;
 	
     hidden var ballX;
     hidden var ballY;

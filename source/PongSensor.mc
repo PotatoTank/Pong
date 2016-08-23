@@ -8,6 +8,8 @@ class PongSensor extends Ant.GenericChannel {
     const PERIOD = 1966; // 10 Hz
     const TRANSMISSION_TYPE = 1;
     const RADIO_FREQUENCY = 25;
+    
+    hidden var deviceNumber;
 
     hidden var chanAssign;
 
@@ -25,10 +27,12 @@ class PongSensor extends Ant.GenericChannel {
         // Get the channel
         chanAssign = new Ant.ChannelAssignment(Ant.CHANNEL_TYPE_TX_NOT_RX, Ant.NETWORK_PUBLIC);
         GenericChannel.initialize(method(:onMessage), chanAssign);
+        
+        deviceNumber = Random.getRandomNumber(1, 256);
 
         // Set the configuration
         deviceCfg = new Ant.DeviceConfig( {
-            :deviceNumber => 1,
+            :deviceNumber => self.deviceNumber,
             :deviceType => DEVICE_TYPE,
             :transmissionType => TRANSMISSION_TYPE,
             :messagePeriod => PERIOD,
