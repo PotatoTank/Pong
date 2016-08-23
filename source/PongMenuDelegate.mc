@@ -24,7 +24,7 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
             //Ui.switchToView(new JoinView(), new JoinDelegate(), Ui.SLIDE_RIGHT);
             
             display = new PongDisplay();
-            display.open();    
+            display.open();
             
             Ui.switchToView(new GameViewDisplay(display), new GameDelegate(), Ui.SLIDE_RIGHT); 
         }
