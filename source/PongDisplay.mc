@@ -16,7 +16,7 @@ class PongDisplay extends Ant.GenericChannel {
     hidden var pastEventCount;
     hidden var deviceCfg;
     
-    hidden var payoadTx;
+    hidden var payloadTx;
     hidden var payloadRx;
 
     function initialize() {

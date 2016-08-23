@@ -6,6 +6,9 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
 
 	var sensor;
 	var display;
+	
+	hidden var progressBar;
+	hidden var timer;
 
     function initialize() {
         MenuInputDelegate.initialize();
@@ -26,8 +29,29 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
             display = new PongDisplay();
             display.open();
             
-            Ui.switchToView(new GameViewDisplay(display), new GameDelegate(), Ui.SLIDE_RIGHT); 
+            toProgressBar();
+            // Ui.switchToView(new GameViewDisplay(display), new GameDelegate(), Ui.SLIDE_RIGHT); 
         }
     }
-
+    
+    function toProgressBar() {
+    	if (timer == null) {
+    		timer = new Timer.Timer();
+    	}
+    	
+    	// A progress bar with "busy" scrolling.
+    	progressBar = new Ui.ProgressBar("Searching...", null);
+    	Ui.pushView(progressBar, new ProgressBarDelegate(), Ui.SLIDE_LEFT);
+    	// 10-second delay to match the time-out of the search.
+    	timer.start(method(:timerCallback), 10000, true);
+    }
+    
+    //! Called if the watch cannot pair within timeout period.
+    function timerCallback() {
+    	// Go back to the menu view.
+    	Ui.popView(Ui.SLIDE_RIGHT);
+    	if (timer != null) {
+    		timer.stop();
+    	}
+    }
 }

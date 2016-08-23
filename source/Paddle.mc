@@ -1,3 +1,4 @@
+//! A paddle used in Pong.
 class Paddle {
 	static const PADDLE_ONE_X = 45;
 	static const PADDLE_TWO_X = 100;
