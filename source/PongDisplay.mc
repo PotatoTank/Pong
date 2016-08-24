@@ -18,15 +18,19 @@ class PongDisplay extends Ant.GenericChannel {
     
     hidden var payloadTx;
     hidden var payloadRx;
+    
+    hidden var pongDisplayCallback;
+    
+    var banana;
 
-    function initialize() {
+    function initialize(callback) {
         // Get the channel
         chanAssign = new Ant.ChannelAssignment(Ant.CHANNEL_TYPE_RX_NOT_TX, Ant.NETWORK_PUBLIC);
         GenericChannel.initialize(method(:onMessage), chanAssign);
 
         // Set the configuration
         deviceCfg = new Ant.DeviceConfig( {
-            :deviceNumber => 0,                 // Wildcard our search
+            :deviceNumber => 123,                 // Wildcard our search
             :deviceType => DEVICE_TYPE,
             :transmissionType => TRANSMISSION_TYPE,
             :messagePeriod => PERIOD,
@@ -38,13 +42,20 @@ class PongDisplay extends Ant.GenericChannel {
         searching = true;
         payloadTx = new [8];
         payloadRx = new [8];
+  		
+  		pongDisplayCallback = callback;
+  		
+  		banana = true;
     }
 
     function open() {
         // Open the channel
         GenericChannel.open();
-
         searching = true;
+    }
+    
+    function close() {
+    	GenericChannel.close();
     }
 
 	function getBallX() {
@@ -63,5 +74,10 @@ class PongDisplay extends Ant.GenericChannel {
         // Parse the payload
         payloadRx = msg.getPayload();
 		Sys.println(payloadRx);
+		if (banana) {
+			pongDisplayCallback.invoke();
+			banana = false;
+		}
+		
     }
 }

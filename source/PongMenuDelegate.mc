@@ -26,7 +26,7 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
             Sys.println("Join");
             //Ui.switchToView(new JoinView(), new JoinDelegate(), Ui.SLIDE_RIGHT);
             
-            display = new PongDisplay();
+            display = new PongDisplay(method(:pongDisplayCallback));
             display.open();
             
             toProgressBar();
@@ -50,8 +50,24 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     function timerCallback() {
     	// Go back to the menu view.
     	Ui.popView(Ui.SLIDE_RIGHT);
+    	stopTimer();
+	}
+    
+    function onBack() {
+    	stopTimer();
+    }
+    
+    hidden function stopTimer() {
     	if (timer != null) {
     		timer.stop();
     	}
+    }
+    
+    function pongDisplayCallback(timer) {
+    	Sys.println("we did it!");
+    	if (timer != null) {
+    		timer.stop();
+    	}
+		Ui.pushView(new GameDisplayView(), new GameDisplayDelegate(), Ui.SLIDE_LEFT);
     }
 }

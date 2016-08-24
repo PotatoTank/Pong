@@ -57,8 +57,8 @@ class GameDisplayView extends Ui.View {
         //paddleTwo = delegate.getPaddleTwo();
         //dc.fillRectangle(paddleOne.PADDLE_X, paddleOne.getPaddleY(), paddleOne.PADDLE_WIDTH, paddleOne.PADDLE_HEIGHT);
         // draw game graphics
-        ball.setBallX(display.getBallX());
-        ball.setBallY(display.getBallY());
+        //ball.setBallX(display.getBallX());
+        //ball.setBallY(display.getBallY());
         dc.drawCircle(0, 0, ball.RADIUS);
         
     }

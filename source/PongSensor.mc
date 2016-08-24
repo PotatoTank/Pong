@@ -5,7 +5,7 @@ using Toybox.System as Sys;
 
 class PongSensor extends Ant.GenericChannel {
     const DEVICE_TYPE = 1;
-    const PERIOD = 1966; // 10 Hz
+    const PERIOD = 1966; // 16.66 Hz
     const TRANSMISSION_TYPE = 1;
     const RADIO_FREQUENCY = 25;
     
