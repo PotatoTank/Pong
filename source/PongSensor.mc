@@ -23,7 +23,11 @@ class PongSensor extends Ant.GenericChannel {
     hidden var pastEventCount;
     hidden var deviceCfg;
 
-    function initialize() {
+	hidden var pongSensorCallback;
+	
+	hidden var paired;
+
+    function initialize(callback) {
         // Get the channel
         chanAssign = new Ant.ChannelAssignment(Ant.CHANNEL_TYPE_TX_NOT_RX, Ant.NETWORK_PUBLIC);
         GenericChannel.initialize(method(:onMessage), chanAssign);
@@ -46,6 +50,10 @@ class PongSensor extends Ant.GenericChannel {
         message = new Ant.Message();
         data = new PongData();
         dataPage = new PongDataPage();
+        
+        pongSensorCallback = callback;
+        
+        paired = false;
     }
 
     function open() {
@@ -54,18 +62,7 @@ class PongSensor extends Ant.GenericChannel {
 
         searching = true;
         
-        data.ballX = 0xFF;
-        data.ballY = 0xFF;
-        data.paddleOneY = 0xFF;
-        data.paddleOneScore = 0;
-        data.paddleTwoScore = 0;
-        data.state = STATE_PAUSE;
-        
-        dataPage.set(data, payloadTx);
-        
-        message.setPayload(payloadTx);
-        
-        GenericChannel.sendBroadcast(message);
+        updateBroadcast();
     }
 
     function closeSensor() {
@@ -76,14 +73,26 @@ class PongSensor extends Ant.GenericChannel {
 		data.ballX = ballX;
 		data.ballY = ballY;
 		
+		updateBroadcast();
+	}
+
+	function updateBroadcast() {
 		dataPage.set(data, payloadTx);
-		
-		message.setPayload(payloadTx);
-		GenericChannel.sendBroadcast(message);
+        message.setPayload(payloadTx);
+        GenericChannel.sendBroadcast(message);
 	}
 
     function onMessage(msg) {
         // Parse the rx payload.
         payloadRx = msg.getPayload();
+        
+        if (msg.messageId == Ant.MSG_ID_ACKNOWLEDGED_DATA) {
+        	if (payloadRx[0] == 2 && payloadRx[7] == 1 && !paired) { // TODO: Add constant for page
+        		data.pairing = 0;
+        		updateBroadcast();
+        		pongSensorCallback.invoke();
+        		paired = true;
+        	}
+        }
     }
 }

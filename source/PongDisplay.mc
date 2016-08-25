@@ -12,8 +12,10 @@ class PongDisplay extends Ant.GenericChannel {
     hidden var chanAssign;
 
     hidden var data;
+    hidden var dataPage;
     hidden var searching;
-    hidden var pastEventCount;
+    hidden var message;
+
     hidden var deviceCfg;
     
     hidden var payloadTx;
@@ -21,8 +23,8 @@ class PongDisplay extends Ant.GenericChannel {
     
     hidden var pongDisplayCallback;
     
-    var banana;
-
+    hidden var paired;
+    
     function initialize(callback) {
         // Get the channel
         chanAssign = new Ant.ChannelAssignment(Ant.CHANNEL_TYPE_RX_NOT_TX, Ant.NETWORK_PUBLIC);
@@ -42,10 +44,14 @@ class PongDisplay extends Ant.GenericChannel {
         searching = true;
         payloadTx = new [8];
         payloadRx = new [8];
+        
+        message = new Ant.Message();
+        data = new PongDisplayData();
+        dataPage = new PongDisplayDataPage();
   		
   		pongDisplayCallback = callback;
   		
-  		banana = true;
+  		paired = false;
     }
 
     function open() {
@@ -70,14 +76,24 @@ class PongDisplay extends Ant.GenericChannel {
         GenericChannel.close();
     }
 
+	function sendAcknowledged() {
+		dataPage.set(data, payloadTx);
+        message.setPayload(payloadTx);
+        GenericChannel.sendAcknowledge(message);
+	}
+
     function onMessage(msg) {
         // Parse the payload
         payloadRx = msg.getPayload();
-		Sys.println(payloadRx);
-		if (banana) {
-			pongDisplayCallback.invoke();
-			banana = false;
-		}
+		//Sys.println(payloadRx);
 		
+		if (msg.messageId == Ant.MSG_ID_BROADCAST_DATA) {
+			if (payloadRx[0] == 1 && payloadRx[7] ==1 && !paired) { // TODO: use objects
+				data.pairing = 0;
+				sendAcknowledged();
+				pongDisplayCallback.invoke();
+				paired = true;
+			}
+		}
     }
 }

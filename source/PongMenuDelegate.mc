@@ -17,15 +17,13 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     function onMenuItem(item) {
         if (item == :item_1) {
             Sys.println("Host");
-            sensor = new PongSensor();
+            sensor = new PongSensor(method(:pongSensorCallback));
         	sensor.open();
-            Ui.switchToView(new GameView(sensor), new GameDelegate(), Ui.SLIDE_RIGHT);
-            
+        	
+        	toProgressBar();          
             
         } else if (item == :item_2) {
-            Sys.println("Join");
-            //Ui.switchToView(new JoinView(), new JoinDelegate(), Ui.SLIDE_RIGHT);
-            
+            Sys.println("Join");            
             display = new PongDisplay(method(:pongDisplayCallback));
             display.open();
             
@@ -63,11 +61,16 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     	}
     }
     
-    function pongDisplayCallback(timer) {
-    	Sys.println("we did it!");
+    function pongSensorCallback() {
     	if (timer != null) {
     		timer.stop();
     	}
-		Ui.pushView(new GameDisplayView(), new GameDisplayDelegate(), Ui.SLIDE_LEFT);
+		Ui.pushView(new GameView(sensor), new GameDelegate(), Ui.SLIDE_LEFT);
+    }
+    
+    function pongDisplayCallback() {
+    	timer.stop();
+    	Sys.println("i stopped it");
+		Ui.pushView(new GameDisplayView(display), new GameDisplayDelegate(display), Ui.SLIDE_LEFT);
     }
 }
