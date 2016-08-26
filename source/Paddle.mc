@@ -25,4 +25,8 @@ class Paddle {
     function setPaddleY(y){
     	paddleY = y;
     }
+    
+    function getPaddleX() {
+    	return paddleX;
+    }
 }

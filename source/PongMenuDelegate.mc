@@ -7,6 +7,8 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
 	var sensor;
 	var display;
 	
+	var gameView;
+	
 	hidden var progressBar;
 	hidden var timer;
 
@@ -86,7 +88,8 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     	if (progressBar != null) {
     		Ui.popView(Ui.SLIDE_IMMEDIATE);
     	}
-		Ui.switchToView(new GameView(sensor), new GameDelegate(), Ui.SLIDE_LEFT);
+    	gameView = new GameView(sensor);
+		Ui.switchToView(gameView, new GameDelegate(gameView), Ui.SLIDE_LEFT);
 		Sys.println("Connected!!");
     }
     

@@ -14,6 +14,9 @@ class GameView extends Ui.View {
 	var delegate;
 	
 	var sensor;
+	
+	var paddleOneX;
+	var paddleOneY;
 
 	// Ball Settings
 	hidden var ball;
@@ -33,12 +36,19 @@ class GameView extends Ui.View {
         
         height = dc.getHeight();
         width = dc.getWidth();
-        
         ball = new Ball(height, width);
-        
         timer = new Timer.Timer();
         timer.start(method(:update), updateFrequency, true);
     }
+
+	function drawObjects(ball, paddleOne) {
+		self.ball = ball;
+		self.paddleOne = paddleOne;
+	}
+	
+	function getBall() {
+		return ball;
+	}
 
     //! Called when this View is brought to the foreground. Restore
     //! the state of this View and prepare it to be shown. This includes
@@ -46,16 +56,21 @@ class GameView extends Ui.View {
     function onShow() {
     }
 
+	function loadPaddle(paddle) {
+		paddleOne = paddle;
+	}
+
     //! Update the view
     function onUpdate(dc) {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
         
         //clear everything on screen
-        dc.clear();        
-        //paddleOne = delegate.getPaddleOne();
-        //paddleTwo = delegate.getPaddleTwo();
-        //dc.fillRectangle(paddleOne.PADDLE_X, paddleOne.getPaddleY(), paddleOne.PADDLE_WIDTH, paddleOne.PADDLE_HEIGHT);
+       // dc.clear();        
+
+        //paddleTwo = dc.getPaddleTwo();
+        //dc.fillRectangle(40, 40, 2, 10);
+        dc.fillRectangle(paddleOne.getPaddleX(), paddleOne.getPaddleY(), paddleOne.PADDLE_WIDTH, paddleOne.PADDLE_HEIGHT);
         // draw game graphics
         ball.updatePosition();
         dc.drawCircle(ball.getBallX(), ball.getBallY(), ball.RADIUS);

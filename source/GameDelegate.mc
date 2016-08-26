@@ -7,11 +7,18 @@ class GameDelegate extends Ui.BehaviorDelegate {
 
 	hidden var paddleOne;
 	hidden var paddleTwo;
+	
+	var view;
+	
+	var ball;
 
-    function initialize() {
+    function initialize(view) {
         BehaviorDelegate.initialize();
-        paddleOne = new Paddle(Paddle.PADDLE_ONE_X, 0); // ideally, the y-value should be height/2... but we need dc?
+        paddleOne = new Paddle(Paddle.PADDLE_ONE_X, 40); // ideally, the y-value should be height/2... but we need dc?
         paddleTwo = new Paddle(Paddle.PADDLE_TWO_X, 0);
+        self.view = view;
+        ball = view.getBall();
+        view.loadPaddle(paddleOne);
     }
 
     function onMenu() {
@@ -21,11 +28,11 @@ class GameDelegate extends Ui.BehaviorDelegate {
     function onKeyPressed(evt) {
     	if (evt.getKey() == Ui.KEY_DOWN) {
     		Sys.println("Down");
-    		paddleOne.setPaddleY(paddleOne.getPaddleY() - 1);
+    		paddleOne.setPaddleY(paddleOne.getPaddleY() + 1);
     	}
     	else if (evt.getKey() == Ui.KEY_UP) {
     		Sys.println("Up");
-    		paddleOne.setPaddleY(paddleOne.getPaddleY() + 1);
+    		paddleOne.setPaddleY(paddleOne.getPaddleY() - 1);
     	}
     }
     
