@@ -68,12 +68,11 @@ class GameView extends Ui.View {
     //! memory.
     function onHide() {
     }
-
-    }
     
     //! This method is hooked in to the start function of the timer
     //! to allow the onUpdate function to get called at the specified
     //! updateFrequency
     function update() {
     	Ui.requestUpdate();
+    }
 }

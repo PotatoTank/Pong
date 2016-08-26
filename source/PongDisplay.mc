@@ -32,7 +32,7 @@ class PongDisplay extends Ant.GenericChannel {
 
         // Set the configuration
         deviceCfg = new Ant.DeviceConfig( {
-            :deviceNumber => 123,                 // Wildcard our search
+            :deviceNumber => 0,                 // Wildcard our search
             :deviceType => DEVICE_TYPE,
             :transmissionType => TRANSMISSION_TYPE,
             :messagePeriod => PERIOD,
@@ -72,10 +72,6 @@ class PongDisplay extends Ant.GenericChannel {
 		return payloadRx[2];
 	}
 
-    function closeSensor() {
-        GenericChannel.close();
-    }
-
 	function sendAcknowledged() {
 		dataPage.set(data, payloadTx);
         message.setPayload(payloadTx);
@@ -88,9 +84,9 @@ class PongDisplay extends Ant.GenericChannel {
 		//Sys.println(payloadRx);
 		
 		if (msg.messageId == Ant.MSG_ID_BROADCAST_DATA) {
-			if (payloadRx[0] == 1 && payloadRx[7] ==1 && !paired) { // TODO: use objects
-				data.pairing = 0;
+			if (payloadRx[0] == 1 && payloadRx[7] == 1 && !paired) { // TODO: use objects
 				sendAcknowledged();
+				data.pairing = 0;
 				pongDisplayCallback.invoke();
 				paired = true;
 			}

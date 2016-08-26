@@ -3,8 +3,11 @@ using Toybox.System as Sys;
 
 class ProgressBarDelegate extends Ui.BehaviorDelegate {
 	
-    function initialize() {
+	hidden var callback;
+	
+    function initialize(callback) {
         BehaviorDelegate.initialize();
+        self.callback = callback;
     }
     
     function onMenu() {
@@ -14,5 +17,9 @@ class ProgressBarDelegate extends Ui.BehaviorDelegate {
     }
 
 	function onTap(evt) {
+    }
+    
+    function onBack() {
+    	callback.invoke();
     }
 }

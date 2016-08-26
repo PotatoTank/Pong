@@ -28,6 +28,14 @@ class GameDelegate extends Ui.BehaviorDelegate {
     		paddleOne.setPaddleY(paddleOne.getPaddleY() + 1);
     	}
     }
+    
+    function getPaddleOne() {
+    	Sys.println("Im here bruh");
+    }
+    
+    function getPaddleTwo() {
+    	Sys.println("Im here bruh 2");
+    }
 
 	function onTap(evt) {
         Sys.println("Hi");

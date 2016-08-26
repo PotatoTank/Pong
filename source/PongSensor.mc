@@ -59,13 +59,11 @@ class PongSensor extends Ant.GenericChannel {
     function open() {
         // Open the channel
         GenericChannel.open();
-
         searching = true;
-        
         updateBroadcast();
     }
 
-    function closeSensor() {
+    function close() {
         GenericChannel.close();
     }
 
@@ -87,7 +85,10 @@ class PongSensor extends Ant.GenericChannel {
         payloadRx = msg.getPayload();
         
         if (msg.messageId == Ant.MSG_ID_ACKNOWLEDGED_DATA) {
+        	Sys.println("received ack");
+        	Sys.println(paired);
         	if (payloadRx[0] == 2 && payloadRx[7] == 1 && !paired) { // TODO: Add constant for page
+        		Sys.println("ack received");
         		data.pairing = 0;
         		updateBroadcast();
         		pongSensorCallback.invoke();

@@ -15,6 +15,13 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     }
 
     function onMenuItem(item) {
+    	if (sensor != null) {
+    		sensor.close();
+    	}
+    	if (display != null) {
+    		display.close();
+    	}
+    	
         if (item == :item_1) {
             Sys.println("Host");
             sensor = new PongSensor(method(:pongSensorCallback));
@@ -39,7 +46,7 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     	
     	// A progress bar with "busy" scrolling.
     	progressBar = new Ui.ProgressBar("Searching...", null);
-    	Ui.pushView(progressBar, new ProgressBarDelegate(), Ui.SLIDE_LEFT);
+    	Ui.pushView(progressBar, new ProgressBarDelegate(method(:progressBarCallback)), Ui.SLIDE_LEFT);
     	// 10-second delay to match the time-out of the search.
     	timer.start(method(:timerCallback), 10000, true);
     }
@@ -53,6 +60,8 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     
     function onBack() {
     	stopTimer();
+    	sensor.close();
+    	display.close();
     }
     
     hidden function stopTimer() {
@@ -61,16 +70,31 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     	}
     }
     
-    function pongSensorCallback() {
-    	if (timer != null) {
-    		timer.stop();
+    function progressBarCallback() {
+    	stopTimer();
+    	if (sensor != null) {
+    		sensor.close();
     	}
-		Ui.pushView(new GameView(sensor), new GameDelegate(), Ui.SLIDE_LEFT);
+    	if (display != null) {
+    		display.close();
+    	}
+    	Sys.println("everything stopped");
+    }
+    
+    function pongSensorCallback() {
+    	stopTimer();
+    	if (progressBar != null) {
+    		Ui.popView(Ui.SLIDE_IMMEDIATE);
+    	}
+		Ui.switchToView(new GameView(sensor), new GameDelegate(), Ui.SLIDE_LEFT);
+		Sys.println("Connected!!");
     }
     
     function pongDisplayCallback() {
-    	timer.stop();
-    	Sys.println("i stopped it");
-		Ui.pushView(new GameDisplayView(display), new GameDisplayDelegate(display), Ui.SLIDE_LEFT);
+    	stopTimer();
+    	if (progressBar != null) {
+    		Ui.popView(Ui.SLIDE_IMMEDIATE);
+    	}
+		Ui.switchToView(new GameDisplayView(display), new GameDisplayDelegate(), Ui.SLIDE_LEFT);
     }
 }

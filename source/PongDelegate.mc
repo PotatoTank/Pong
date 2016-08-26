@@ -17,8 +17,13 @@ class PongDelegate extends Ui.BehaviorDelegate {
     	return true;
     }
     
+    function onTap(evt) {
+    	showMenu();
+    	return true;
+    }
+    
     hidden function showMenu() {
-    	Ui.pushView(new Rez.Menus.MainMenu(), new PongMenuDelegate(), Ui.SLIDE_UP);
+    	Ui.pushView(new Rez.Menus.MainMenu(), new PongMenuDelegate(), Ui.SLIDE_LEFT);
     }
 
 }
