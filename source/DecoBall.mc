@@ -1,9 +1,9 @@
 using Toybox.Math;
 using Toybox.System;
 
-//! The ball in Pong.
-class Ball {
-	const RADIUS = 5;
+//! A ball that bounces off all boundaries of the screen to be used for decoration.
+class DecoBall {
+	const RADIUS = 10;
 	
     hidden var ballX;
     hidden var ballY;
@@ -40,20 +40,8 @@ class Ball {
     	return angle;
     }
     
-    function updatePosition(paddleOne){
-    	
-    	if ((ballX - RADIUS <= paddleOne.getPaddleX() + paddleOne.PADDLE_WIDTH)
-    		&& (ballY - RADIUS < paddleOne.getPaddleY() + paddleOne.PADDLE_HEIGHT)
-    		&& (ballY + RADIUS > paddleOne.getPaddleY())) {
-    		dx = -dx;
-    	}
-    	
-    	else if ((ballX + RADIUS >= paddleTwo.getPaddleX())
-    		&& (ballY - RADIUS < paddleTwo.getPaddleY() + paddleTwo.PADDLE_HEIGHT)
-    		&& (ballY + RADIUS > paddleTwo.getPaddleY())) {
-    		dx = -dx;
-    	}
-    	
+    function updatePosition(){
+    
     	if (ballX + RADIUS > width) {
     		dx = -dx;
     	}

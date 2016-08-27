@@ -5,7 +5,7 @@ using Toybox.System as Sys;
 
 class PongDisplay extends Ant.GenericChannel {
    	const DEVICE_TYPE = 1;
-    const PERIOD = 1966;
+    const PERIOD = 2731;
     const TRANSMISSION_TYPE = 1;
     const RADIO_FREQUENCY = 25;
 
@@ -20,6 +20,7 @@ class PongDisplay extends Ant.GenericChannel {
     
     hidden var payloadTx;
     hidden var payloadRx;
+    hidden var payloadTemp;
     
     hidden var pongDisplayCallback;
     
@@ -71,6 +72,22 @@ class PongDisplay extends Ant.GenericChannel {
 	function getBallY() {
 		return payloadRx[2];
 	}
+	
+	function getPaddleOneY() {
+		return payloadRx[3];
+	}
+
+	function updatePaddleTwoPosition(paddleTwoY) {
+		data.paddleTwoY = paddleTwoY;
+		
+		sendAcknowledged();
+	}
+	
+	function updateBroadcast() {
+		dataPage.set(data, payloadTx);
+        message.setPayload(payloadTx);
+        GenericChannel.sendBroadcast(message);
+	}
 
 	function sendAcknowledged() {
 		dataPage.set(data, payloadTx);
@@ -80,8 +97,18 @@ class PongDisplay extends Ant.GenericChannel {
 
     function onMessage(msg) {
         // Parse the payload
-        payloadRx = msg.getPayload();
-		//Sys.println(payloadRx);
+        payloadTemp = msg.getPayload();
+        
+        if (payloadTemp[0] == 1){
+        	payloadRx[0] = payloadTemp[0];
+        	payloadRx[1] = payloadTemp[1];
+        	payloadRx[2] = payloadTemp[2];
+        	payloadRx[3] = payloadTemp[3];
+        	payloadRx[4] = payloadTemp[4];
+        	payloadRx[5] = payloadTemp[5];
+        	payloadRx[6] = payloadTemp[6];
+        	payloadRx[7] = payloadTemp[7];
+        }
 		
 		if (msg.messageId == Ant.MSG_ID_BROADCAST_DATA) {
 			if (payloadRx[0] == 1 && payloadRx[7] == 1 && !paired) { // TODO: use objects

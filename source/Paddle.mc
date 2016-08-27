@@ -1,7 +1,7 @@
 //! A paddle used in Pong.
 class Paddle {
 	static const PADDLE_ONE_X = 45;
-	static const PADDLE_TWO_X = 100;
+	static const PADDLE_TWO_X = 162;
 	
 	const PADDLE_WIDTH = 5;
 	const PADDLE_HEIGHT = 35;
@@ -18,11 +18,11 @@ class Paddle {
     	height = PADDLE_HEIGHT;
     }
     
-    function getPaddleY(){
+    function getPaddleY() {
     	return paddleY;
     }
     
-    function setPaddleY(y){
+    function setPaddleY(y) {
     	paddleY = y;
     }
     

@@ -5,7 +5,7 @@ using Toybox.System as Sys;
 
 class PongSensor extends Ant.GenericChannel {
     const DEVICE_TYPE = 1;
-    const PERIOD = 1966; // 16.66 Hz
+    const PERIOD = 2731;
     const TRANSMISSION_TYPE = 1;
     const RADIO_FREQUENCY = 25;
     
@@ -15,6 +15,7 @@ class PongSensor extends Ant.GenericChannel {
 
 	hidden var payloadTx;
 	hidden var payloadRx;
+	hidden var payloadTemp;
 	hidden var message;
 
     hidden var data;
@@ -67,9 +68,19 @@ class PongSensor extends Ant.GenericChannel {
         GenericChannel.close();
     }
 
-	function update(ballX, ballY) {
+	function getPaddleTwoY() {
+		return payloadRx[3];
+	}
+
+	function updateBallPosition(ballX, ballY) {
 		data.ballX = ballX;
 		data.ballY = ballY;
+		
+		updateBroadcast();
+	}
+
+	function updatePaddleOnePosition(paddleOneY) {
+		data.paddleOneY = paddleOneY;
 		
 		updateBroadcast();
 	}
@@ -82,7 +93,18 @@ class PongSensor extends Ant.GenericChannel {
 
     function onMessage(msg) {
         // Parse the rx payload.
-        payloadRx = msg.getPayload();
+        payloadTemp = msg.getPayload();
+        
+        if (payloadTemp[0] == 2){
+        	payloadRx[0] = payloadTemp[0];
+        	payloadRx[1] = payloadTemp[1];
+        	payloadRx[2] = payloadTemp[2];
+        	payloadRx[3] = payloadTemp[3];
+        	payloadRx[4] = payloadTemp[4];
+        	payloadRx[5] = payloadTemp[5];
+        	payloadRx[6] = payloadTemp[6];
+        	payloadRx[7] = payloadTemp[7];
+        }
         
         if (msg.messageId == Ant.MSG_ID_ACKNOWLEDGED_DATA) {
         	Sys.println("received ack");

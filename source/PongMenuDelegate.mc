@@ -88,9 +88,7 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     	if (progressBar != null) {
     		Ui.popView(Ui.SLIDE_IMMEDIATE);
     	}
-    	gameView = new GameView(sensor);
-		Ui.switchToView(gameView, new GameDelegate(gameView), Ui.SLIDE_LEFT);
-		Sys.println("Connected!!");
+		Ui.switchToView(new GameView(sensor), new GameDelegate(), Ui.SLIDE_LEFT);
     }
     
     function pongDisplayCallback() {

@@ -5,32 +5,25 @@ using Toybox.Timer as Timer;
 //! Controller for Paddle Two.
 class GameDisplayDelegate extends Ui.BehaviorDelegate {
 
-	hidden var paddleOne;
-	hidden var paddleTwo;
-
     function initialize() {
         BehaviorDelegate.initialize();
-        paddleOne = new Paddle(Paddle.PADDLE_ONE_X, 0); // ideally, the y-value should be height/2... but we need dc?
-        paddleTwo = new Paddle(Paddle.PADDLE_TWO_X, 0);
     }
 
     function onMenu() {
     	// Pause the game
     }
     
-    function onKeyPressed(evt) {
+    function onSelect() {
+    	// TODO: Pause the game
+    }
+    
+    function onKey(evt) {
     	if (evt.getKey() == Ui.KEY_DOWN) {
-    		Sys.println("Down");
-    		paddleTwo.setPaddleY(paddleTwo.getPaddleY() - 1);
+    		paddleTwoDown();
     	}
     	else if (evt.getKey() == Ui.KEY_UP) {
-    		Sys.println("Up");
-    		paddleTwo.setPaddleY(paddleTwo.getPaddleY() + 1);
+    		paddleTwoUp();
     	}
-    }
-
-	function onTap(evt) {
-        Sys.println("Hi");
     }
     
     function getDelegate()
