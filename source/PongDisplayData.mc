@@ -5,7 +5,7 @@ class PongDisplayData {
 	var pairing;
 
     function initialize() {
-    	paddleTwoY = 0xFF;
+    	paddleTwoY = 0x50;
     	state = STATE_PAUSE;
     	pairing = 1;
     }

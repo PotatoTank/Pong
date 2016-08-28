@@ -1,13 +1,23 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Timer as Timer;
 using Toybox.Graphics as Gfx;
-using Toybox.System as Sys;
 
 const PADDLE_SPEED = 10;
 const BALL_SPEED = 5;
 
+const TEXT_X = 110;
+const TEXT_Y = 130;
+
+const WIN_SCORE = 11;
+
+const MESSAGE_WIN = "YOU WIN";
+const MESSAGE_LOSE = "YOU LOSE";
+const MESSAGE_PAUSE = "PAUSE";
+
 var height;
 var width;
+
+var gameState;
 
 var ball;
 var paddleOne;
@@ -46,7 +56,7 @@ function getBallY() {
 //! Game view for the host.
 class GameView extends Ui.View {
 	
-	var sensor;
+	//var sensor;
 	
 	// Timer
 	hidden var timer;
@@ -58,8 +68,10 @@ class GameView extends Ui.View {
         paddleOneScore = 0;
         paddleTwoScore = 0;
         
-        paddleOne = new Paddle(Paddle.PADDLE_ONE_X, 40);
-        paddleTwo = new Paddle(Paddle.PADDLE_TWO_X, 40);
+        paddleOne = new Paddle(Paddle.PADDLE_ONE_X, 80);
+        paddleTwo = new Paddle(Paddle.PADDLE_TWO_X, 80);
+        
+        gameState = STATE_PLAY;
     }
 
     //! Load your resources here
@@ -81,26 +93,43 @@ class GameView extends Ui.View {
     }
 
     //! Update the view
-    function onUpdate(dc) {
-        View.onUpdate(dc);
-        
-        Sys.println(sensor);
+    function onUpdate(dc) {        
+        if (gameState == STATE_PLAY) {
+        	View.onUpdate(dc);
 
-        paddleTwo.setPaddleY(sensor.getPaddleTwoY());
-        drawPaddleTwo(dc);
-        
-        ball.updatePosition(paddleOne);
-        drawBall(dc);
-        
-        drawPaddleOne(dc);
-        
-        sensor.updateBallPosition(getBallX(), getBallY());
-        sensor.updatePaddleOnePosition(paddleOne.getPaddleY());
-        
-        drawPaddleOneScore(dc);
-        drawPaddleTwoScore(dc);
-        sensor.updatePaddleOneScore(paddleOneScore);
-        sensor.updatePaddleTwoScore(paddleTwoScore);
+	        paddleTwo.setPaddleY(sensor.getPaddleTwoY());
+	        drawPaddleTwo(dc);
+	        
+	        ball.updatePosition(paddleOne);
+	        drawBall(dc);
+	        
+	        drawPaddleOne(dc);
+	        
+	        sensor.updateBallPosition(getBallX(), getBallY());
+	        sensor.updatePaddleOnePosition(paddleOne.getPaddleY());
+	        
+	        drawPaddleOneScore(dc);
+	        drawPaddleTwoScore(dc);
+	        sensor.updatePaddleOneScore(paddleOneScore);
+	        sensor.updatePaddleTwoScore(paddleTwoScore);
+	        
+	        if (paddleOneScore == WIN_SCORE) {
+	        	youWin(dc);
+	        }
+	        else if (paddleTwoScore == WIN_SCORE) {
+	        	youLose(dc);
+	        }
+		}
+    }
+    
+    hidden function youWin(dc) {
+    	dc.drawText(TEXT_X, TEXT_Y, Gfx.FONT_LARGE, MESSAGE_WIN, Gfx.TEXT_JUSTIFY_CENTER);
+    	gameState = STATE_PAUSE;
+    }
+    
+    hidden function youLose(dc) {
+    	dc.drawText(TEXT_X, TEXT_Y, Gfx.FONT_LARGE, MESSAGE_LOSE, Gfx.TEXT_JUSTIFY_CENTER);
+    	gameState = STATE_PAUSE;
     }
 
 	hidden function drawPaddleOneScore(dc) {

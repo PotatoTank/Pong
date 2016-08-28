@@ -9,9 +9,9 @@ class PongData {
 	var pairing;
 
     function initialize() {
-    	ballX = 0xFF;
-    	ballY = 0xFF;
-    	paddleOneY = 0xFF;
+    	ballX = 0x50;
+    	ballY = 0x50;
+    	paddleOneY = 0x50;
         paddleOneScore = 0;
         paddleTwoScore = 0;
         state = STATE_PAUSE;

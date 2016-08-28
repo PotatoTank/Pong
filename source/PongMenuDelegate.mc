@@ -2,12 +2,12 @@ using Toybox.Ant as Ant;
 using Toybox.WatchUi as Ui;
 using Toybox.System as Sys;
 
+var sensor;
+var display;
+
 class PongMenuDelegate extends Ui.MenuInputDelegate {
 
-	var sensor;
-	var display;
-
-	var gameView;
+	//var gameView;
 	var gameDisplayView;
 	
 	hidden var progressBar;
@@ -74,15 +74,14 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     
     function pongSensorCallback() {
     	stopTimer();
-    	gameView = new GameView();
-		Ui.switchToView(gameView, new GameDelegate(), Ui.SLIDE_LEFT);
-		gameView.sensor = sensor;
+		Ui.switchToView(new GameView(), new GameDelegate(), Ui.SLIDE_LEFT);
+		//gameView.sensor = sensor;
     }
     
     function pongDisplayCallback() {
     	stopTimer();
     	gameDisplayView = new GameDisplayView();
 		Ui.switchToView(gameDisplayView, new GameDisplayDelegate(), Ui.SLIDE_LEFT);
-		gameDisplayView.display = display;
+		//gameDisplayView.display = display;
     }
 }

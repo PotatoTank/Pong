@@ -1,6 +1,7 @@
 using Toybox.Ant as Ant;
 using Toybox.WatchUi as Ui;
 using Toybox.Time as Time;
+using Toybox.System as Sys;
 
 class PongDisplay extends Ant.GenericChannel {
    	const DEVICE_TYPE = 1;
@@ -94,7 +95,7 @@ class PongDisplay extends Ant.GenericChannel {
 	}
 
     function onMessage(msg) {
-        // Parse the payload
+        // Parse the rx payload
         payloadTemp = msg.getPayload();
         
         if (payloadTemp[0] == 1){
@@ -107,13 +108,17 @@ class PongDisplay extends Ant.GenericChannel {
         	payloadRx[6] = payloadTemp[6];
         	payloadRx[7] = payloadTemp[7];
         }
-		
+		Sys.println(payloadRx);
 		if (msg.messageId == Ant.MSG_ID_BROADCAST_DATA) {
 			if (payloadRx[0] == 1 && payloadRx[7] == 1 && !paired) { // TODO: use objects
-				sendAcknowledged();
+				var count = 0;
+				while (count < 3) {
+					sendAcknowledged();
+					count += 1;
+				}
 				data.pairing = 0;
-				paired = true;
 				pongDisplayCallback.invoke();
+				paired = true;
 			}
 		}
     }
