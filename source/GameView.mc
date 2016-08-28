@@ -1,6 +1,7 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Timer as Timer;
 using Toybox.Graphics as Gfx;
+using Toybox.System as Sys;
 
 const PADDLE_SPEED = 10;
 const BALL_SPEED = 5;

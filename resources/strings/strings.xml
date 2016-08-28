@@ -2,7 +2,7 @@
     <string id="AppName">Pong</string>
 
 	<string id="title">PONG</string>
-    <string id="prompt">Press the menu button \nto begin.</string>
+    <string id="prompt">Tap screen or press the\nStart Button to begin.</string>
 
     <string id="menu_label_1">Host</string>
     <string id="menu_label_2">Join</string>

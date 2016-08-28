@@ -1,5 +1,6 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Timer as Timer;
+using Toybox.System as Sys;
 
 //! Handles inputs for Paddle One.
 class GameDelegate extends Ui.BehaviorDelegate {

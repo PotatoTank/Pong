@@ -8,7 +8,7 @@ var display;
 class PongMenuDelegate extends Ui.MenuInputDelegate {
 
 	//var gameView;
-	var gameDisplayView;
+	//var gameDisplayView;
 	
 	hidden var progressBar;
 	hidden var timer;
@@ -40,7 +40,7 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     	
     	// A progress bar with "busy" scrolling.
     	progressBar = new Ui.ProgressBar("Searching...", null);
-    	Ui.pushView(progressBar, new ProgressBarDelegate(method(:progressBarCallback)), Ui.SLIDE_LEFT);
+    	Ui.pushView(progressBar, new ProgressBarDelegate(), Ui.SLIDE_LEFT);
     	// 10-second delay to match the time-out of the search.
     	timer.start(method(:timerCallback), 10000, true);
     }
@@ -61,10 +61,6 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     function onBack() {
     	stopTimer();
     }
-   
-    function progressBarCallback() {
-    	stopTimer();
-    }
     
     hidden function stopTimer() {
     	if (timer != null) {
@@ -80,8 +76,7 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     
     function pongDisplayCallback() {
     	stopTimer();
-    	gameDisplayView = new GameDisplayView();
-		Ui.switchToView(gameDisplayView, new GameDisplayDelegate(), Ui.SLIDE_LEFT);
+		Ui.switchToView(new GameDisplayView(), new GameDisplayDelegate(), Ui.SLIDE_LEFT);
 		//gameDisplayView.display = display;
     }
 }

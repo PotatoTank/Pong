@@ -2,11 +2,8 @@ using Toybox.WatchUi as Ui;
 
 class ProgressBarDelegate extends Ui.BehaviorDelegate {
 	
-	hidden var callback;
-	
     function initialize(callback) {
         BehaviorDelegate.initialize();
-        self.callback = callback;
     }
     
     function onMenu() {
@@ -19,6 +16,6 @@ class ProgressBarDelegate extends Ui.BehaviorDelegate {
     }
     
     function onBack() {
-    	callback.invoke();
+		return false;
     }
 }

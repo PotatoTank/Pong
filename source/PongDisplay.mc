@@ -108,14 +108,10 @@ class PongDisplay extends Ant.GenericChannel {
         	payloadRx[6] = payloadTemp[6];
         	payloadRx[7] = payloadTemp[7];
         }
-		Sys.println(payloadRx);
+		Sys.println("Display:" + payloadRx);
 		if (msg.messageId == Ant.MSG_ID_BROADCAST_DATA) {
 			if (payloadRx[0] == 1 && payloadRx[7] == 1 && !paired) { // TODO: use objects
-				var count = 0;
-				while (count < 3) {
-					sendAcknowledged();
-					count += 1;
-				}
+				sendAcknowledged();
 				data.pairing = 0;
 				pongDisplayCallback.invoke();
 				paired = true;

@@ -1,6 +1,7 @@
 using Toybox.Ant as Ant;
 using Toybox.WatchUi as Ui;
 using Toybox.Time as Time;
+using Toybox.System as Sys;
 
 class PongSensor extends Ant.GenericChannel {
     const DEVICE_TYPE = 1;
@@ -110,8 +111,8 @@ class PongSensor extends Ant.GenericChannel {
         	payloadRx[6] = payloadTemp[6];
         	payloadRx[7] = payloadTemp[7];
         }
-        
         if (msg.messageId == Ant.MSG_ID_ACKNOWLEDGED_DATA) {
+        Sys.println("Sensor:" + payloadRx);
         	if (payloadRx[0] == 2 && payloadRx[7] == 1 && !paired) { // TODO: Add constant for page
         		data.pairing = 0;
         		updateBroadcast();
