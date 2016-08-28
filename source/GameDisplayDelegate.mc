@@ -1,5 +1,4 @@
 using Toybox.WatchUi as Ui;
-using Toybox.System as Sys;
 using Toybox.Timer as Timer;
 
 //! Controller for Paddle Two.

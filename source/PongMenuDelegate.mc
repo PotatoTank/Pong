@@ -6,8 +6,9 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
 
 	var sensor;
 	var display;
-	
+
 	var gameView;
+	var gameDisplayView;
 	
 	hidden var progressBar;
 	hidden var timer;
@@ -17,27 +18,18 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     }
 
     function onMenuItem(item) {
-    	if (sensor != null) {
-    		sensor.close();
-    	}
-    	if (display != null) {
-    		display.close();
-    	}
-    	
+    	stopTimer();
         if (item == :item_1) {
-            Sys.println("Host");
             sensor = new PongSensor(method(:pongSensorCallback));
         	sensor.open();
         	
         	toProgressBar();          
             
-        } else if (item == :item_2) {
-            Sys.println("Join");            
+        } else if (item == :item_2) {           
             display = new PongDisplay(method(:pongDisplayCallback));
             display.open();
             
             toProgressBar();
-            // Ui.switchToView(new GameViewDisplay(display), new GameDelegate(), Ui.SLIDE_RIGHT); 
         }
     }
     
@@ -58,12 +50,20 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     	// Go back to the menu view.
     	Ui.popView(Ui.SLIDE_RIGHT);
     	stopTimer();
+    	if (sensor != null) {
+    		sensor.close();
+    	}
+    	if (display != null) {
+    		display.close();
+    	}
 	}
     
     function onBack() {
     	stopTimer();
-    	sensor.close();
-    	display.close();
+    }
+   
+    function progressBarCallback() {
+    	stopTimer();
     }
     
     hidden function stopTimer() {
@@ -72,30 +72,17 @@ class PongMenuDelegate extends Ui.MenuInputDelegate {
     	}
     }
     
-    function progressBarCallback() {
-    	stopTimer();
-    	if (sensor != null) {
-    		sensor.close();
-    	}
-    	if (display != null) {
-    		display.close();
-    	}
-    	Sys.println("everything stopped");
-    }
-    
     function pongSensorCallback() {
     	stopTimer();
-    	if (progressBar != null) {
-    		Ui.popView(Ui.SLIDE_IMMEDIATE);
-    	}
-		Ui.switchToView(new GameView(sensor), new GameDelegate(), Ui.SLIDE_LEFT);
+    	gameView = new GameView();
+		Ui.switchToView(gameView, new GameDelegate(), Ui.SLIDE_LEFT);
+		gameView.sensor = sensor;
     }
     
     function pongDisplayCallback() {
     	stopTimer();
-    	if (progressBar != null) {
-    		Ui.popView(Ui.SLIDE_IMMEDIATE);
-    	}
-		Ui.switchToView(new GameDisplayView(display), new GameDisplayDelegate(), Ui.SLIDE_LEFT);
+    	gameDisplayView = new GameDisplayView();
+		Ui.switchToView(gameDisplayView, new GameDisplayDelegate(), Ui.SLIDE_LEFT);
+		gameDisplayView.display = display;
     }
 }

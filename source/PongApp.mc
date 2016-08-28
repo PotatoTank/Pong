@@ -1,7 +1,6 @@
 using Toybox.Application as App;
 using Toybox.Graphics as Gfx;
 using Toybox.WatchUi as Ui;
-using Toybox.System as Sys;
 
 class PongApp extends App.AppBase {
 

@@ -1,5 +1,4 @@
 using Toybox.Math;
-using Toybox.System;
 
 //! The ball in Pong.
 class Ball {
@@ -13,27 +12,36 @@ class Ball {
     hidden var height;
     hidden var width;
     
+    hidden var leftRight;
+    
     var speed;
     var angle;
     
-    function initialize(height, width, speed, angle) {
+    function initialize(height, width, speed) {
     	self.height = height;
     	self.width = width;
     	
     	setBallX(width/2);
     	setBallY(height/2);
     	
-    	self.speed = speed;
-    	self.angle = angle;
+    	angle = 180;
+    	while (angle == 180) {
+    		angle = Random.getRandomNumber(60, 120);
+    	}
+    	angle *= (Math.PI / 180.0);
+    	leftRight = Random.getRandomNumber(0, 2);
     	
-    	setDx(Random.getRandomNumber(-20, 20));
-    	setDy(Random.getRandomNumber(-10, 10));
-    }
-    
-    function setAngle(speed, angle) {
-    	self.angle = angle;
+    	self.speed = speed;
     	dx = speed * Math.sin(angle);
     	dy = speed * Math.cos(angle);
+    	
+    	if (leftRight == 1) {
+    		dx = -dx;
+    	}
+    }
+    
+    function reset() {
+    	initialize(height, width, speed);
     }
     
     function getAngle() {
@@ -55,11 +63,13 @@ class Ball {
     	}
     	
     	if (ballX + RADIUS > width) {
-    		dx = -dx;
+    		paddleOneScoreUp();
+    		reset();
     	}
     	
     	if (ballX - RADIUS < 0) {
-    		dx = -dx;
+    		paddleTwoScoreUp();
+    		reset();
     	}
     	
     	if (ballY + RADIUS > height) {

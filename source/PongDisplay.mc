@@ -1,7 +1,6 @@
 using Toybox.Ant as Ant;
 using Toybox.WatchUi as Ui;
 using Toybox.Time as Time;
-using Toybox.System as Sys;
 
 class PongDisplay extends Ant.GenericChannel {
    	const DEVICE_TYPE = 1;
@@ -13,7 +12,6 @@ class PongDisplay extends Ant.GenericChannel {
 
     hidden var data;
     hidden var dataPage;
-    hidden var searching;
     hidden var message;
 
     hidden var deviceCfg;
@@ -42,7 +40,6 @@ class PongDisplay extends Ant.GenericChannel {
             :searchThreshold => 0} );           // Pair to all transmitting sensors
         GenericChannel.setDeviceConfig(deviceCfg);
 
-        searching = true;
         payloadTx = new [8];
         payloadRx = new [8];
         
@@ -58,7 +55,6 @@ class PongDisplay extends Ant.GenericChannel {
     function open() {
         // Open the channel
         GenericChannel.open();
-        searching = true;
     }
     
     function close() {
@@ -76,17 +72,19 @@ class PongDisplay extends Ant.GenericChannel {
 	function getPaddleOneY() {
 		return payloadRx[3];
 	}
+	
+	function getPaddleOneScore() {
+		return payloadRx[4];
+	}
+	
+	function getPaddleTwoScore() {
+		return payloadRx[5];
+	}
 
 	function updatePaddleTwoPosition(paddleTwoY) {
 		data.paddleTwoY = paddleTwoY;
 		
 		sendAcknowledged();
-	}
-	
-	function updateBroadcast() {
-		dataPage.set(data, payloadTx);
-        message.setPayload(payloadTx);
-        GenericChannel.sendBroadcast(message);
 	}
 
 	function sendAcknowledged() {
@@ -114,8 +112,8 @@ class PongDisplay extends Ant.GenericChannel {
 			if (payloadRx[0] == 1 && payloadRx[7] == 1 && !paired) { // TODO: use objects
 				sendAcknowledged();
 				data.pairing = 0;
-				pongDisplayCallback.invoke();
 				paired = true;
+				pongDisplayCallback.invoke();
 			}
 		}
     }

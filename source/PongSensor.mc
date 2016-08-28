@@ -1,7 +1,6 @@
 using Toybox.Ant as Ant;
 using Toybox.WatchUi as Ui;
 using Toybox.Time as Time;
-using Toybox.System as Sys;
 
 class PongSensor extends Ant.GenericChannel {
     const DEVICE_TYPE = 1;
@@ -20,7 +19,6 @@ class PongSensor extends Ant.GenericChannel {
 
     hidden var data;
     hidden var dataPage;
-    hidden var searching;
     hidden var pastEventCount;
     hidden var deviceCfg;
 
@@ -45,9 +43,9 @@ class PongSensor extends Ant.GenericChannel {
             :searchTimeoutLowPriority => 4} ); // 10 second time out.
         GenericChannel.setDeviceConfig(deviceCfg);
 
-        searching = true;
         payloadTx = new [8];
         payloadRx = new [8];
+        
         message = new Ant.Message();
         data = new PongData();
         dataPage = new PongDataPage();
@@ -60,7 +58,6 @@ class PongSensor extends Ant.GenericChannel {
     function open() {
         // Open the channel
         GenericChannel.open();
-        searching = true;
         updateBroadcast();
     }
 
@@ -75,13 +72,21 @@ class PongSensor extends Ant.GenericChannel {
 	function updateBallPosition(ballX, ballY) {
 		data.ballX = ballX;
 		data.ballY = ballY;
-		
 		updateBroadcast();
 	}
 
 	function updatePaddleOnePosition(paddleOneY) {
 		data.paddleOneY = paddleOneY;
-		
+		updateBroadcast();
+	}
+	
+	function updatePaddleOneScore(score) {
+		data.paddleOneScore = score;
+		updateBroadcast();
+	}
+	
+	function updatePaddleTwoScore(score) {
+		data.paddleTwoScore = score;
 		updateBroadcast();
 	}
 
@@ -107,10 +112,7 @@ class PongSensor extends Ant.GenericChannel {
         }
         
         if (msg.messageId == Ant.MSG_ID_ACKNOWLEDGED_DATA) {
-        	Sys.println("received ack");
-        	Sys.println(paired);
         	if (payloadRx[0] == 2 && payloadRx[7] == 1 && !paired) { // TODO: Add constant for page
-        		Sys.println("ack received");
         		data.pairing = 0;
         		updateBroadcast();
         		pongSensorCallback.invoke();

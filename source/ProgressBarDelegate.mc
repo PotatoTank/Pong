@@ -1,5 +1,4 @@
 using Toybox.WatchUi as Ui;
-using Toybox.System as Sys;
 
 class ProgressBarDelegate extends Ui.BehaviorDelegate {
 	

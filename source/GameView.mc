@@ -15,6 +15,14 @@ var paddleTwo;
 var paddleOneScore;
 var paddleTwoScore;
 
+function paddleOneScoreUp() {
+	paddleOneScore += 1;
+}
+
+function paddleTwoScoreUp() {
+	paddleTwoScore += 1;
+}
+
 function paddleOneUp() {
 	if (paddleOne.getPaddleY() - PADDLE_SPEED > 0) {
 		paddleOne.setPaddleY(paddleOne.getPaddleY() - PADDLE_SPEED);
@@ -35,14 +43,6 @@ function getBallY() {
 	return ball.getBallY();
 }
 
-function setBallAngle(angle) {
-	ball.setAngle(speed, angle);
-}
-
-function getBallAngle() {
-	return ball.getAngle();
-}
-
 //! Game view for the host.
 class GameView extends Ui.View {
 	
@@ -52,9 +52,11 @@ class GameView extends Ui.View {
 	hidden var timer;
 	const updateFrequency = 100;
 
-	function initialize(sensor) {
+	function initialize() {
         View.initialize();
-        self.sensor = sensor;
+        
+        paddleOneScore = 0;
+        paddleTwoScore = 0;
         
         paddleOne = new Paddle(Paddle.PADDLE_ONE_X, 40);
         paddleTwo = new Paddle(Paddle.PADDLE_TWO_X, 40);
@@ -66,7 +68,7 @@ class GameView extends Ui.View {
         
         height = dc.getHeight();
         width = dc.getWidth();
-        ball = new Ball(height, width);
+        ball = new Ball(height, width, BALL_SPEED);
         
         timer = new Timer.Timer();
         timer.start(method(:refreshUi), updateFrequency, true);
@@ -81,6 +83,8 @@ class GameView extends Ui.View {
     //! Update the view
     function onUpdate(dc) {
         View.onUpdate(dc);
+        
+        Sys.println(sensor);
 
         paddleTwo.setPaddleY(sensor.getPaddleTwoY());
         drawPaddleTwo(dc);
@@ -92,6 +96,19 @@ class GameView extends Ui.View {
         
         sensor.updateBallPosition(getBallX(), getBallY());
         sensor.updatePaddleOnePosition(paddleOne.getPaddleY());
+        
+        drawPaddleOneScore(dc);
+        drawPaddleTwoScore(dc);
+        sensor.updatePaddleOneScore(paddleOneScore);
+        sensor.updatePaddleTwoScore(paddleTwoScore);
+    }
+
+	hidden function drawPaddleOneScore(dc) {
+    	dc.drawText(85, 20, Gfx.FONT_NUMBER_MILD, paddleOneScore, Gfx.TEXT_JUSTIFY_CENTER);
+    }
+    
+    hidden function drawPaddleTwoScore(dc) {
+    	dc.drawText(130, 20, Gfx.FONT_NUMBER_MILD, paddleTwoScore, Gfx.TEXT_JUSTIFY_CENTER);
     }
 
 	hidden function drawBall(dc) {

@@ -1,5 +1,4 @@
 using Toybox.Math;
-using Toybox.System;
 
 //! A ball that bounces off all boundaries of the screen to be used for decoration.
 class DecoBall {

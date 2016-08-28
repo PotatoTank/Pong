@@ -23,9 +23,8 @@ class GameDisplayView extends Ui.View {
 	hidden var timer;
 	const updateFrequency = 50;
 
-	function initialize(display) {
+	function initialize() {
         View.initialize();
-        self.display = display;
         
         paddleOne = new Paddle(Paddle.PADDLE_ONE_X, 40);
         paddleTwo = new Paddle(Paddle.PADDLE_TWO_X, 40);
@@ -37,7 +36,7 @@ class GameDisplayView extends Ui.View {
         
         height = dc.getHeight();
         width = dc.getWidth();
-        ball = new Ball(height, width);
+        ball = new Ball(height, width, BALL_SPEED);
         
         timer = new Timer.Timer();
         timer.start(method(:refreshUi), updateFrequency, true);
@@ -60,8 +59,22 @@ class GameDisplayView extends Ui.View {
         ball.setBallY(display.getBallY());
        	drawBall(dc);
        	
+       	display.updatePaddleTwoPosition(paddleTwo.getPaddleY());
         drawPaddleTwo(dc);
-        display.updatePaddleTwoPosition(paddleTwo.getPaddleY());
+        
+        paddleOneScore = display.getPaddleOneScore();
+        paddleTwoScore = display.getPaddleTwoScore();
+        
+        drawPaddleOneScore(dc);
+        drawPaddleTwoScore(dc);
+    }
+    
+    hidden function drawPaddleOneScore(dc) {
+    	dc.drawText(85, 20, Gfx.FONT_NUMBER_MILD, paddleOneScore, Gfx.TEXT_JUSTIFY_CENTER);
+    }
+    
+    hidden function drawPaddleTwoScore(dc) {
+    	dc.drawText(130, 20, Gfx.FONT_NUMBER_MILD, paddleTwoScore, Gfx.TEXT_JUSTIFY_CENTER);
     }
 
 	hidden function drawBall(dc) {
