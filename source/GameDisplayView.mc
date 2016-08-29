@@ -89,6 +89,14 @@ class GameDisplayView extends Ui.View {
 	        ball.setBallX(currX);
 	        ball.setBallY(currY);
 	       	drawBall(dc);
+	       	
+	       	if ((currX + ball.RADIUS >= paddleTwo.getPaddleX())
+    			&& (currX + ball.RADIUS <= paddleTwo.getPaddleX() + paddleTwo.PADDLE_WIDTH)
+    			&& (currY - ball.RADIUS < paddleTwo.getPaddleY() + paddleTwo.PADDLE_HEIGHT)
+    			&& (currY + ball.RADIUS > paddleTwo.getPaddleY())) {
+    			display.updateFlip();
+    		}
+	       	
 	       	display.updatePaddleTwoPosition(paddleTwo.getPaddleY());
 	        drawPaddleTwo(dc);
 	        paddleOneScore = display.getPaddleOneScore();

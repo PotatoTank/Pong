@@ -5,6 +5,7 @@ class PongDisplayDataPage {
     function parse(payload, data) {
     	data.paddleTwoY = parsePaddleTwoY(payload);
     	data.state = parseState(payload);
+    	data.flip = parseFlip(payload);
     	data.pairing = parsePairing(payload);   	
     }
     
@@ -14,13 +15,17 @@ class PongDisplayDataPage {
     	payload[2] = 0xFF;
     	setPaddleTwoY(payload, data);
     	payload[4] = 0xFF;
-    	payload[5] = 0xFF;
+    	setFlip(payload, data);
     	setState(payload, data);
 		setPairing(payload, data);
 	}
     
 	hidden function parsePaddleTwoY(payload) {
 		return payload[3];
+	}
+	
+	hidden function parseFlip(payload) {
+		return payload[5];
 	}
 	
 	hidden function parseState(payload) {
@@ -37,6 +42,10 @@ class PongDisplayDataPage {
 	
 	hidden function setPaddleTwoY(payload, data) {
 		payload[3] = data.paddleTwoY;
+	}
+
+	hidden function setFlip(payload, data) {
+		payload[5] = data.flip;
 	}
 
 	hidden function setState(payload, data) {

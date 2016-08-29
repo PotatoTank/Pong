@@ -69,6 +69,10 @@ class PongSensor extends Ant.GenericChannel {
 	function getPaddleTwoY() {
 		return payloadRx[3];
 	}
+	
+	function getFlip() {
+		return payloadRx[5];
+	}
 
 	function updateBallPosition(ballX, ballY) {
 		data.ballX = ballX;

@@ -2,11 +2,13 @@
 class PongDisplayData {
 	var paddleTwoY;
 	var state;
+	var flip;
 	var pairing;
 
     function initialize() {
     	paddleTwoY = 0x50;
     	state = STATE_PAUSE;
+    	flip = 0;
     	pairing = 1;
     }
 }

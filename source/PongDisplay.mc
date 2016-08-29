@@ -87,6 +87,13 @@ class PongDisplay extends Ant.GenericChannel {
 		
 		sendAcknowledged();
 	}
+	
+	function updateFlip() {
+		data.Flip = 1;
+		sendAcknowledged();
+		data.Flip = 0;
+		sendAcknowledged();
+	}
 
 	function sendAcknowledged() {
 		dataPage.set(data, payloadTx);
