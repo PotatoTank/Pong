@@ -28,7 +28,7 @@ class GameDisplayView extends Ui.View {
 	
 	// Timer
 	hidden var timer;
-	const updateFrequency = 50;
+	const updateFrequency = 100;
 
 	function initialize() {
         View.initialize();
