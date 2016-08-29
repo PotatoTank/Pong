@@ -106,10 +106,6 @@ class GameView extends Ui.View {
 	        
 	        drawPaddleOne(dc);
 	        
-	        if (sensor.getFlip() == 1) {
-	        	ball.setDx(-ball.getDx());
-	        }
-	        
 	        sensor.updateBallPosition(getBallX(), getBallY());
 	        sensor.updatePaddleOnePosition(paddleOne.getPaddleY());
 	        

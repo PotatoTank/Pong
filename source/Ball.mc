@@ -5,6 +5,8 @@ using Toybox.System;
 class Ball {
 	const RADIUS = 5;
 	
+	const MAX_BOUNCE_ANGLE = 30.0; // max angle to reflect off paddle
+	
     hidden var ballX;
     hidden var ballY;
     hidden var dx;
@@ -55,14 +57,28 @@ class Ball {
     		&& (ballX - RADIUS >= paddleOne.getPaddleX())
     		&& (ballY - RADIUS < paddleOne.getPaddleY() + paddleOne.PADDLE_HEIGHT)
     		&& (ballY + RADIUS > paddleOne.getPaddleY())) {
-    		dx = -dx;
+    		//dx = -dx;
+    		
+    		var relativeIntersectY = (paddleOne.getPaddleY()+(paddleOne.PADDLE_HEIGHT/2)) - ballY;
+	    	var normalizedRelativeIntersectionY = (relativeIntersectY/(paddleOne.PADDLE_HEIGHT/2));
+	    	var bounceAngle = normalizedRelativeIntersectionY * MAX_BOUNCE_ANGLE * (Math.PI / 180.0);
+	    	
+	    	dx = speed * Math.cos(bounceAngle);
+			dy = speed * -1 * (Math.sin(bounceAngle));
     	}
     	
     	else if ((ballX + RADIUS >= paddleTwo.getPaddleX())
     		&& (ballX + RADIUS <= paddleTwo.getPaddleX() + paddleTwo.PADDLE_WIDTH)
     		&& (ballY - RADIUS < paddleTwo.getPaddleY() + paddleTwo.PADDLE_HEIGHT)
     		&& (ballY + RADIUS > paddleTwo.getPaddleY())) {
-    		dx = -dx;
+    		//dx = -dx;
+    		
+    		var relativeIntersectY = (paddleTwo.getPaddleY()+(paddleTwo.PADDLE_HEIGHT/2)) - ballY;
+	    	var normalizedRelativeIntersectionY = (relativeIntersectY/(paddleTwo.PADDLE_HEIGHT/2));
+	    	var bounceAngle = normalizedRelativeIntersectionY * MAX_BOUNCE_ANGLE * (Math.PI / 180.0);
+	    	
+	    	dx = -1 * speed * Math.cos(bounceAngle);
+			dy = speed * -1 * (Math.sin(bounceAngle));
     	}
     	
     	if (ballX + RADIUS > width) {
