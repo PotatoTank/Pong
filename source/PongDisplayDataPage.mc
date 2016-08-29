@@ -14,6 +14,7 @@ class PongDisplayDataPage {
     	payload[2] = 0xFF;
     	setPaddleTwoY(payload, data);
     	payload[4] = 0xFF;
+    	payload[5] = 0xFF;
     	setState(payload, data);
 		setPairing(payload, data);
 	}
