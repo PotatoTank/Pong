@@ -52,12 +52,14 @@ class Ball {
     function updatePosition(paddleOne){
     	
     	if ((ballX - RADIUS <= paddleOne.getPaddleX() + paddleOne.PADDLE_WIDTH)
+    		&& (ballX - RADIUS >= paddleOne.getPaddleX())
     		&& (ballY - RADIUS < paddleOne.getPaddleY() + paddleOne.PADDLE_HEIGHT)
     		&& (ballY + RADIUS > paddleOne.getPaddleY())) {
     		dx = -dx;
     	}
     	
     	else if ((ballX + RADIUS >= paddleTwo.getPaddleX())
+    		&& (ballX + RADIUS <= paddleTwo.getPaddleX() + paddleTwo.PADDLE_WIDTH)
     		&& (ballY - RADIUS < paddleTwo.getPaddleY() + paddleTwo.PADDLE_HEIGHT)
     		&& (ballY + RADIUS > paddleTwo.getPaddleY())) {
     		dx = -dx;

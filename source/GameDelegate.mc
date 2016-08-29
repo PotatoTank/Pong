@@ -14,6 +14,7 @@ class GameDelegate extends Ui.BehaviorDelegate {
     function onMenu() {
     	// TODO: Pause the game
     	prevKeyBack = false;
+    	return true;
     }
     
     function onSelect() {

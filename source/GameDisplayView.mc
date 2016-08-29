@@ -20,6 +20,12 @@ class GameDisplayView extends Ui.View {
 	
 	//var display;
 	
+	var prevX;
+	var prevY;
+	
+	var currX;
+	var currY;
+	
 	// Timer
 	hidden var timer;
 	const updateFrequency = 50;
@@ -55,8 +61,33 @@ class GameDisplayView extends Ui.View {
         	View.onUpdate(dc);
 	        paddleOne.setPaddleY(display.getPaddleOneY());
 	        drawPaddleOne(dc);
-	        ball.setBallX(display.getBallX());
-	        ball.setBallY(display.getBallY());
+	        currX = display.getBallX();
+	        currY = display.getBallY();
+	        // Controls jumpy ball due to bad RF.
+	        if (prevX == null) {
+	        	prevX = currX;
+	        }
+	        else {
+	        	if (((currX - prevX) > 5 || (currX - prevX) < -5) && currX < 10) {
+	        		currX = prevX;
+	        	} 
+	        	else {
+	        		prevX = currX;
+	        	}
+	        }
+	        if (prevY == null) {
+	        	prevY = currY;
+	        }
+	        else {
+	        	if (((currY - prevY) > 10 || (currX - prevX) < -10)) {
+	        		currX = prevX;
+	        	}
+	        	else {
+	        		prevX = currX;
+	        	}
+	        }
+	        ball.setBallX(currX);
+	        ball.setBallY(currY);
 	       	drawBall(dc);
 	       	display.updatePaddleTwoPosition(paddleTwo.getPaddleY());
 	        drawPaddleTwo(dc);
